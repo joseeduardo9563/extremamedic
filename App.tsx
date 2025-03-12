@@ -1,118 +1,112 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import LoadingScreen from './src/screens/login/LoadingScreen';
+import SelectScreen from './src/screens/login/SelectScreen';
+import HomeScreen from './src/screens/home/HomeScreen';
+import SelectIsoladaScreen from './src/screens/isolada/SelectIsoladaScreen';
+import EscolhaIsoladaScreen from './src/screens/isolada/EscolhaIsoladaScreen';
+import ResultadoBuscaScreen from './src/screens/resultado/ResultadoBuscaScreen';
+import ResultadoDetalhesScreen from './src/screens/resultado/ResultadoDetalhesScreen';
+import SelectCombinadaScreen from './src/screens/combinada/SelectCombinadaScreeen';
+import ContatoScreens from './src/screens/contato/ContatoScreens';
+import WebViewScreen from './src/screens/webview/WebViewScreen';
+import IntermediaryScreen from './src/screens/webview/IntermediaryScreen';
+import LoginScreen from './src/screens/login/LoginScreen';
+import PerfilScreen from './src/screens/login/PerfilScreen';
+import RecuperarSenhaScreen from './src/screens/login/RecuperarSenhaScreen';
+import AboutScreen from './src/screens/About/AboutScreen';
+import PrimeiroAcessoScreen from './src/screens/primeiroAcesso/PrimeiroAcessoScreen';
+import PrimeiroAcesso_doisScreen from './src/screens/primeiroAcesso/primeiroAcesso_doisScreen';
+import FinanceiroScreen from './src/screens/finaceiro/FinanceiroScreen';
+import AlterarSenhaScreen from './src/screens/trocarSenha/AlterarSenhaScreen';
+import AlterarSenha_DoisScreen from './src/screens/trocarSenha/AlterarSenha_DoisScreen';
+import ContratoScreen from './src/screens/finaceiro/ContratoScreen';
+import UtilizacoesScreen from './src/screens/finaceiro/UtilizacoesScreen';
+import Utilizacoes2Screen from './src/screens/finaceiro/Utilizacoes2Screen';
+import CarteirinhaScreen from './src/screens/carteirinha/CarteirinhaScreen';
+import Carteirinha_2Screen from './src/screens/carteirinha/Carteirinha_2Screen';
+import ConfirmaScreen from './src/screens/primeiroAcesso/ConfirmaScreen';
+import SenhaScreen from './src/screens/primeiroAcesso/SenhaScreen';
+import Confirma_notFoundScreen from './src/screens/primeiroAcesso/Confirma_notFoundScreen';
+import CoparticipacaoScreen from './src/screens/coparticipacao/CoparticipacaoScreen';
+import ResultCopartScreen from './src/screens/coparticipacao/ResultCopartScreen';
+import TermosScreen from './src/screens/termos/TermosScreen';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+export type RootStackParamList = {
+    Loading: undefined;
+    SelectIsolada: undefined;
+    Perfil: undefined;
+    Login: undefined;
+    Home: undefined;
+    Intermediary: undefined;
+    Select: undefined;
+    Contato: undefined;
+    WebView: undefined;
+    EscolhaIsolada: undefined;
+    ResultadoBusca: undefined;
+    ResultadoDetalhes: undefined;
+    SelectCombinada: undefined;
+    RecuperarSenha: undefined;
+    About: undefined;
+    PrimeiroAcesso: undefined;
+    Senha: undefined;
+    PrimeiroAcesso_dois: undefined;
+    Financeiro: undefined;
+    AlterarSenha: undefined;
+    AlterarSenhaDois: undefined;
+    Contrato: undefined;
+    Utilizacoes: undefined;
+    Utilizacoes2: undefined;
+    Carteirinha: undefined;
+    Carteirinha_2: undefined;
+    Confirma: undefined;
+    Confirma_notFound: undefined;
+    Coparticipacao: undefined;
+    ResultCopart: undefined;
+    Termos: undefined;
+};
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+const Stack = createStackNavigator<RootStackParamList>();
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const App = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Loading" component={LoadingScreen} />
+                <Stack.Screen name="SelectIsolada" component={SelectIsoladaScreen} />
+                <Stack.Screen name="Perfil" component={PerfilScreen} />
+                <Stack.Screen name="Login" component={LoginScreen} />
+                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Intermediary" component={IntermediaryScreen} />
+                <Stack.Screen name="Select" component={SelectScreen} />
+                <Stack.Screen name="Contato" component={ContatoScreens} />
+                <Stack.Screen name="WebView" component={WebViewScreen} />
+                <Stack.Screen name="EscolhaIsolada" component={EscolhaIsoladaScreen} />
+                <Stack.Screen name="ResultadoBusca" component={ResultadoBuscaScreen} />
+                <Stack.Screen name="ResultadoDetalhes" component={ResultadoDetalhesScreen} />
+                <Stack.Screen name="SelectCombinada" component={SelectCombinadaScreen} />
+                <Stack.Screen name="RecuperarSenha" component={RecuperarSenhaScreen} />
+                <Stack.Screen name="About" component={AboutScreen} />
+                <Stack.Screen name="PrimeiroAcesso" component={PrimeiroAcessoScreen} />
+                <Stack.Screen name="Senha" component={SenhaScreen} />
+                <Stack.Screen name="PrimeiroAcesso_dois" component={PrimeiroAcesso_doisScreen} />
+                <Stack.Screen name="Financeiro" component={FinanceiroScreen} />
+                <Stack.Screen name="AlterarSenha" component={AlterarSenhaScreen} />
+                <Stack.Screen name="AlterarSenhaDois" component={AlterarSenha_DoisScreen} />
+                <Stack.Screen name="Contrato" component={ContratoScreen} />
+                <Stack.Screen name="Utilizacoes" component={UtilizacoesScreen} />
+                <Stack.Screen name="Utilizacoes2" component={Utilizacoes2Screen} />
+                <Stack.Screen name="Carteirinha" component={CarteirinhaScreen} />
+                <Stack.Screen name="Carteirinha_2" component={Carteirinha_2Screen} />
+                <Stack.Screen name="Confirma" component={ConfirmaScreen} />
+                <Stack.Screen name="Confirma_notFound" component={Confirma_notFoundScreen} />
+                <Stack.Screen name="Coparticipacao" component={CoparticipacaoScreen} />
+                <Stack.Screen name="ResultCopart" component={ResultCopartScreen} />
+                <Stack.Screen name="Termos" component={TermosScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
+};
 
 export default App;
