@@ -1,6 +1,6 @@
 import { TextInputMask } from 'react-native-masked-text';
 import Server from '../../settings/Server';
-import { sha1 } from 'react-native-sha1';
+import CryptoJS from "crypto-js";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
@@ -31,7 +31,7 @@ const AlterarSenha = () => {
         setDisable(true);
         Keyboard.dismiss();
         
-        sha1(senhaAtual).then(hash => {
+        CryptoJS.SHA1(senhaAtual).then(hash => {
             const url = `${Server.API}alterarSenha/getDados.asp?cpf=${cpf}&senha=${hash}&matricula=${matricula}`;
             fetch(url)
                 .then(response => response.json())

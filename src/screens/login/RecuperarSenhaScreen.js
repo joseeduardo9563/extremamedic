@@ -23,7 +23,8 @@ import {
 import ColorsScheme from "../../settings/ColorsScheme";
 import { TextInputMask } from "react-native-masked-text";
 import Server from "../../settings/Server";
-import { sha1 } from "react-native-sha1";
+import CryptoJS from "crypto-js";
+
 
 const RecuperarSenha = ({ navigation }) => {
   const [cpf, setCpf] = useState("");
@@ -48,7 +49,7 @@ const RecuperarSenha = ({ navigation }) => {
       const nomeMaeCadastrado = responseJson.nome_mae.split(" ")[0];
       
       if (nomeMae.toUpperCase() === nomeMaeCadastrado) {
-        const hashedSenha = await sha1(novaSenha);
+        const hashedSenha = await CryptoJS.SHA1(novaSenha).toString();
         await fetch(`${Server.API}login/testeUpdateRecuperaSenha.asp?matricula=${matricula}&senha=${hashedSenha}`);
         
         Alert.alert("Verifique seu e-mail", `Sua senha foi encaminhada para o e-mail ${responseJson.email}.`, [{ text: "OK", onPress: () => navigation.navigate("Login") }]);

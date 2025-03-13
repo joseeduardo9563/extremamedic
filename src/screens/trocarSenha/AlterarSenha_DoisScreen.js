@@ -21,7 +21,7 @@ import {
 } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import ColorsScheme from '../../settings/ColorsScheme';
-import { sha1 } from 'react-native-sha1';
+import CryptoJS from "crypto-js";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 
@@ -58,7 +58,7 @@ const AlterarSenhaDois = () => {
         setDisable(true);
         Keyboard.dismiss();
 
-        sha1(novaSenha).then(hash => {
+        CryptoJS.SHA1(novaSenha).then(hash => {
             const key = hash.toUpperCase();
             const url = `${Server.API}alterarSenha/UpdatePassword.asp?matricula=${matricula}&senha=${key}`;
             

@@ -26,7 +26,8 @@ import {
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import ColorsScheme from '../../settings/ColorsScheme';
 import Server from '../../settings/Server';
-import { sha1 } from 'react-native-sha1';
+import CryptoJS from "crypto-js";
+
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 const SenhaScreen = () => {
@@ -76,7 +77,8 @@ const SenhaScreen = () => {
         setIsLoading(true);
         Keyboard.dismiss();
         
-        sha1(senha).then(hash => {
+        
+        CryptoJS.SHA1(senha).then(hash => {
             const senhaHash = Platform.OS === "ios" ? hash.toUpperCase() : hash;
             const url = `${Server.API}primeiroAcesso/testeInsert.asp?matricula=${matricula}&senha=${senhaHash}`;
             

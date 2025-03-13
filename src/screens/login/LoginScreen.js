@@ -26,7 +26,8 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ColorsScheme from "../../settings/ColorsScheme";
 import Server from "../../settings/Server";
-import { sha1 } from "react-native-sha1";
+import CryptoJS from "crypto-js";
+
 
 const LoginScreen = ({ navigation }) => {
   const [matricula, setMatricula] = useState("");
@@ -51,7 +52,7 @@ const LoginScreen = ({ navigation }) => {
     if (matricula !== "" && senha !== "") {
       Keyboard.dismiss();
       try {
-        const hash = await sha1(senha);
+        const hash = await CryptoJS.SHA1(senha).toString();
         const url = `${Server.API}login/autenticate.asp?matricula=${matricula}&senha=${hash}`;
         const response = await fetch(url);
         const responseJson = await response.json();
