@@ -18,6 +18,7 @@ import {
   Input,
   Button,
   Icon,
+  ArrowBackIcon
 } from "native-base";
 import axios from "axios";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -95,11 +96,19 @@ const LoginScreen = ({ navigation }) => {
                 onPress={() => setIsSecurity(!isSecurity)}
               />
             </View>
-            <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} block onPress={onSubmit}>
-              <Text>Entrar</Text>
+            <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 20 }} block onPress={onSubmit}>
+              <Text style={{
+                color: "#FFFFFF"
+              }}>
+                Entrar
+              </Text>
             </Button>
-            <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} block onPress={() => navigation.navigate("PrimeiroAcesso")}>
-              <Text>Primeiro acesso</Text>
+            <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 20 }} block onPress={() => navigation.navigate("PrimeiroAcesso")}>
+              <Text style={{
+                color: "#FFFFFF"
+              }}>
+                Primeiro acesso
+              </Text>
             </Button>
             <TouchableOpacity onPress={() => navigation.navigate("RecuperarSenha")}>
               <Text style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 15, marginTop: 20, alignSelf: "center" }}>Recuperar senha</Text>
@@ -107,8 +116,8 @@ const LoginScreen = ({ navigation }) => {
           </View>
         </ScrollView>
       </ImageBackground>
-      <Button transparent onPress={() => navigation.goBack()} style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0 }}>
-        <Icon name="arrow-back" style={{ color: "black" }} />
+      <Button onPress={() => navigation.goBack()} style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0, backgroundColor: "transparent" }}>
+        <ArrowBackIcon size="5" mt="0.5" color="black" />
       </Button>
     </NativeBaseProvider>
   );
