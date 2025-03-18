@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Platform } from 'react-native';
+import { StyleSheet, View, Platform, ScrollView } from 'react-native';
 import {
     Button,
     Spinner,
     Text,
-    Content,
     Card,
     CardItem,
     Body,
-    H3
 } from 'native-base';
 import ColorsScheme from '../../settings/ColorsScheme';
 import Base from '../../components/Base';
@@ -55,9 +53,11 @@ const ResultadoBuscaScreen = () => {
     return (
         <Base navigation={navigation}>
             <HeaderGoBack navigation={navigation} title={'Rede Credenciada'} />
-            <Content style={styles.content}>
+            <ScrollView style={styles.content}>
                 <View style={styles.headerContainer}>
-                    <H3 style={styles.headerText}>{title.toUpperCase()}</H3>
+                    <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                        {title.toUpperCase()}
+                    </Text>
                     <Text style={styles.subHeaderText}>{subTitle}</Text>
                 </View>
                 {data.length > 0 ? (
@@ -82,7 +82,7 @@ const ResultadoBuscaScreen = () => {
                         <Text style={styles.noResultsText}>Ops.. não foi encontrado favoritos.</Text>
                     </View>
                 )}
-            </Content>
+            </ScrollView>
         </Base>
     );
 };

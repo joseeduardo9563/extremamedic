@@ -10,8 +10,6 @@ import {
 } from "react-native";
 import {
   Text,
-  Content,
-  H3,
   Form,
   Item,
   Button,
@@ -79,7 +77,9 @@ const TermosScreen = () => {
               <View style={styles.logoContainer}>
                 <Image style={styles.logo} source={require('../../assets/Logo_MEDGLO_POS.png')} />
               </View>
-              <H3 style={styles.title}>TERMO DE COMPROMISSO</H3>
+              <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                TERMO DE COMPROMISSO
+              </Text>
               <View style={styles.termsContainer}>
                 <ScrollView nestedScrollEnabled>
                   <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</Text>

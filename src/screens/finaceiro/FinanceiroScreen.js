@@ -6,16 +6,16 @@ import {
   TouchableOpacity,
   ToastAndroid,
   Clipboard,
+  ScrollView
 } from "react-native";
 import {
   Container,
-  Content,
   Text,
   Card,
   CardItem,
   Body,
   Spinner,
-  Root,
+  NativeBaseProvider,
   Badge,
 } from "native-base";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -74,11 +74,11 @@ const FinanceiroScreen = ({ navigation }) => {
   };
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <Container>
         <Base navigation={navigation}>
           <HeaderGoBack navigation={navigation} title={"Segunda via"} />
-          <Content style={{ marginBottom: 55 }}>
+          <ScrollView style={{ marginBottom: 55 }}>
             {isLoading ? (
               <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
                 <Spinner color={ColorsScheme.MAIN_COLOR} />
@@ -125,10 +125,10 @@ const FinanceiroScreen = ({ navigation }) => {
                 </Text>
               </View>
             )}
-          </Content>
+          </ScrollView>
         </Base>
       </Container>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

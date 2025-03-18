@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { View } from "react-native";
+import { View, ScrollView } from "react-native";
 import {
   Button,
-  Spinner,
   Text,
-  Content,
-  H3,
 } from "native-base";
 import ColorsScheme from "../../settings/ColorsScheme";
 import SpinnerDrawer from "../../components/Spinner";
@@ -37,11 +34,11 @@ const SelectIsoladaScreen = ({ navigation }) => {
     <Base navigation={navigation}>
       <HeaderGoBack navigation={navigation} title={"Rede Credenciada"} />
       {isLoading ? (
-        <Content style={{ marginBottom: 55, marginRight: 20 }}>
+        <ScrollView style={{ marginBottom: 55, marginRight: 20 }}>
           <View style={{ margin: 20 }}>
-            <H3 style={{ fontWeight: "bold", color: ColorsScheme.ASENT_COLOR }}>
+            <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
               BUSCA ISOLADA
-            </H3>
+            </Text>
             <Text style={{ fontSize: 12 }}>
               Selecione abaixo o tipo de busca que deseja realizar
             </Text>
@@ -65,7 +62,7 @@ const SelectIsoladaScreen = ({ navigation }) => {
               <FontAwesome5 name={"angle-right"} style={{ color: "#fff", fontSize: 20, paddingRight: 20 }} />
             </Button>
           ))}
-        </Content>
+        </ScrollView>
       ) : isFail ? (
         <SemInformacao error={true} />
       ) : (

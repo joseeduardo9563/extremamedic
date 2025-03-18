@@ -3,16 +3,16 @@ import {
   View,
   Alert,
   Platform,
+  ScrollView
 } from "react-native";
 import {
   Container,
-  Content,
   Text,
   Card,
   CardItem,
   Body,
   Spinner,
-  Root,
+  NativeBaseProvider,
 } from "native-base";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -64,11 +64,11 @@ const UtilizacoesScreen = ({ navigation }) => {
   };
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <Container>
         <Base navigation={navigation}>
           <HeaderGoBack navigation={navigation} title={"Utilizações"} />
-          <Content style={{ marginBottom: 55 }}>
+          <ScrollView style={{ marginBottom: 55 }}>
             {isLoading ? (
               <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
                 <Spinner color={ColorsScheme.MAIN_COLOR} />
@@ -102,10 +102,10 @@ const UtilizacoesScreen = ({ navigation }) => {
                 </Text>
               </View>
             )}
-          </Content>
+          </ScrollView>
         </Base>
       </Container>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Text } from 'react-native';
-import { Button, Picker, H3 } from 'native-base';
+import { Button, Picker } from 'native-base';
 import { ButtonGroup } from 'react-native-elements';
 import ColorsScheme from '../../settings/ColorsScheme';
 import Base from '../../components/Base';
@@ -60,7 +60,7 @@ const SelectCombinadaScreen = ({ navigation }) => {
         <Base navigation={navigation}>
             <HeaderGoBack navigation={navigation} title={'Rede Credenciada'} />
             <ScrollView style={{ marginBottom: 55, backgroundColor: '#f8f8f8', padding: 20 }}>
-                <H3 style={{ fontWeight: 'bold', color: ColorsScheme.ASENT_COLOR }}>BUSCA COMBINADA</H3>
+                <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>BUSCA COMBINADA</Text>
                 <Text style={{ fontSize: 12 }}>Selecione abaixo o tipo</Text>
 
                 <ButtonGroup

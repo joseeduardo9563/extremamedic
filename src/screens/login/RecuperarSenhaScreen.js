@@ -7,12 +7,11 @@ import {
   Keyboard,
   Platform,
   Alert,
+  ScrollView
 } from "react-native";
 import {
   Text,
-  Root,
-  Content,
-  H3,
+  NativeBaseProvider,
   Form,
   Item,
   Input,
@@ -64,7 +63,7 @@ const RecuperarSenha = ({ navigation }) => {
   };
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
       <ImageBackground source={require("../../assets/fundoNovo.png")} style={{ width: "100%", height: "100%", flex: 1 }}>
         {isLoading ? (
@@ -73,11 +72,13 @@ const RecuperarSenha = ({ navigation }) => {
             <Text style={{ color: "#000", textAlign: "center" }}>Enviando senha por email...</Text>
           </View>
         ) : (
-          <Content>
+          <ScrollView>
             <View style={{ padding: 20, marginTop: 50, justifyContent: "center", alignItems: "center" }}>
               <Image style={{ width: 200.6, height: 124 }} source={require("../../assets/Logo_MEDGLO_POS.png")} resizeMode="contain" />
             </View>
-            <H3 style={{ padding: 10, textAlign: "center", fontWeight: "bold" }}>RECUPERAR SENHA</H3>
+            <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+              RECUPERAR SENHA
+            </Text>
             <Form style={{ padding: 10 }}>
               <Item style={{ flexDirection: "column", alignItems: "flex-start" }}>
                 <Text>CPF:</Text>
@@ -96,18 +97,18 @@ const RecuperarSenha = ({ navigation }) => {
                 <Input style={{ width: "100%", fontSize: 14, color: "#000" }} onChangeText={setNomeMae} />
               </Item>
               <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR }} rounded onPress={recuperar}>
+                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }}  onPress={recuperar}>
                   <Text>Enviar</Text>
                 </Button>
               </View>
             </Form>
-          </Content>
+          </ScrollView>
         )}
       </ImageBackground>
       <Button transparent onPress={() => navigation.goBack()} style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0 }}>
         <Icon name="arrow-back" style={{ color: "black" }} />
       </Button>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

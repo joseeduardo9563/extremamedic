@@ -3,17 +3,17 @@ import {
   View,
   Alert,
   Platform,
+  ScrollView
 } from "react-native";
 import {
   Container,
-  Content,
   Text,
   Button,
   Card,
   CardItem,
   Body,
   Spinner,
-  Root,
+  NativeBaseProvider,
 } from "native-base";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ColorsScheme from "../../settings/ColorsScheme";
@@ -61,11 +61,11 @@ const ContratoScreen = ({ navigation }) => {
   };
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <Container>
         <Base navigation={navigation}>
           <HeaderGoBack navigation={navigation} title={"Contratos"} />
-          <Content style={{ marginBottom: 55, backgroundColor: "#FFFFFF" }}>
+          <ScrollView style={{ marginBottom: 55, backgroundColor: "#FFFFFF" }}>
             {isLoading ? (
               <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
                 <Spinner color={ColorsScheme.MAIN_COLOR} />
@@ -97,10 +97,10 @@ const ContratoScreen = ({ navigation }) => {
             ) : (
               <SemInformacao />
             )}
-          </Content>
+          </ScrollView>
         </Base>
       </Container>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

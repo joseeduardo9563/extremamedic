@@ -6,13 +6,12 @@ import {
     View,
     Platform,
     ImageBackground,
-    Alert
+    Alert,
+    ScrollView
 } from 'react-native';
 import {
     Text,
     Container,
-    Content,
-    H3,
     Form,
     Item,
     Input,
@@ -108,11 +107,13 @@ const PrimeiroAcesso = () => {
                         <Text style={styles.loadingText}>Carregando...</Text>
                     </View>
                 ) : (
-                    <Content>
+                    <ScrollView>
                         <View style={styles.logoContainer}>
                             <Image style={styles.logo} source={require('../../assets/Logo_MEDGLO_POS.png')} resizeMode="contain" />
                         </View>
-                        <H3 style={styles.headerText}>PRIMEIRO ACESSO</H3>
+                            <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                                PRIMEIRO ACESSO
+                            </Text>
                         <Form style={styles.formContainer}>
                             <Item style={styles.formItem}>
                                 <Text>Matrícula:</Text>
@@ -131,12 +132,12 @@ const PrimeiroAcesso = () => {
                                 <Input value={mae} onChangeText={setMae} />
                             </Item>
                             <View style={styles.buttonContainer}>
-                                <Button style={styles.button} rounded onPress={onSubmit}>
+                                <Button style={styles.button} onPress={onSubmit}>
                                     <Text>Prosseguir</Text>
                                 </Button>
                             </View>
                         </Form>
-                    </Content>
+                    </ScrollView>
                 )}
             </ImageBackground>
         </Container>
@@ -154,7 +155,8 @@ const styles = StyleSheet.create({
     formItem: { flexDirection: 'column', alignItems: 'flex-start', paddingTop: 10 },
     input: { width: '100%', fontSize: 14, color: "#000" },
     buttonContainer: { flexDirection: 'row', justifyContent: 'flex-end' },
-    button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR }
+    button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR },
+    borderRadius: 10
 });
 
 export default PrimeiroAcesso;

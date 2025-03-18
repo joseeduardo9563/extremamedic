@@ -7,7 +7,7 @@ import {
   ImageBackground,
   Platform,
 } from "react-native";
-import { Text, Root, Button } from "native-base";
+import { Text, NativeBaseProvider, Button } from "native-base";
 import ColorsScheme from "../../settings/ColorsScheme";
 import Version from "../../settings/Version";
 
@@ -34,23 +34,21 @@ const SelectScreen = ({ navigation }) => {
   }, [navigation]);
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <ImageBackground source={require("../../assets/fundoNovo.png")} style={{ width: "100%", height: "100%" }}>
         <View style={{ flex: 1, justifyContent: "center" }}>
           <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
           <Image style={{ width: 200.6, height: 124, alignSelf: "center" }} source={require("../../assets/Logo_MEDGLO_POS.png")} resizeMode="contain" />
           <View style={{ marginTop: 180, justifyContent: "center" }}>
             <Button
-              style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR }}
-              rounded
+              style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR,  borderRadius: 10 }}
               block
               onPress={() => navigation.navigate("Login")}
             >
               <Text style={{ fontSize: 11, textAlign: "center" }}>JÁ SOU BENEFICIÁRIO MedicGLOBAL</Text>
             </Button>
             <Button
-              style={{ margin: 10, borderColor: ColorsScheme.ASENT_COLOR }}
-              rounded
+              style={{ margin: 10, borderColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }}
               bordered
               block
               onPress={() => navigation.navigate("SelectIsolada")}
@@ -61,7 +59,7 @@ const SelectScreen = ({ navigation }) => {
           <Text style={{ fontSize: 12, alignSelf: "center" }}>Versão {Platform.OS === "ios" ? Version.IOS : Version.ANDROID}</Text>
         </View>
       </ImageBackground>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

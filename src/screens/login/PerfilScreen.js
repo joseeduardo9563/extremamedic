@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, AppState } from "react-native";
+import { View, AppState, ScrollView } from "react-native";
 import {
-  Content,
   Button,
   Text,
   H2,
@@ -50,7 +49,7 @@ const PerfilScreen = ({ navigation }) => {
   return (
     <Base navigation={navigation}>
       <HeaderGoBack title="Perfil" navigation={navigation} />
-      <Content style={{ padding: 20 }}>
+      <ScrollView style={{ padding: 20 }}>
         <View
           style={{
             flex: 1,
@@ -86,7 +85,7 @@ const PerfilScreen = ({ navigation }) => {
         >
           <Text style={{ fontSize: 12 }}>Sair</Text>
         </Button>
-      </Content>
+      </ScrollView>
     </Base>
   );
 };

@@ -9,13 +9,12 @@ import {
     Alert,
     ToastAndroid,
     TextInput,
-    Keyboard
+    Keyboard,
+    ScrollView
 } from 'react-native';
 import {
     Text,
     Container,
-    Content,
-    H3,
     Form,
     Item,
     Input,
@@ -114,11 +113,13 @@ const SenhaScreen = () => {
                         <Text style={styles.loadingText}>Cadastrando...</Text>
                     </View>
                 ) : (
-                    <Content>
+                    <ScrollView>
                         <View style={styles.logoContainer}>
                             <Image style={styles.logo} source={require('../../assets/Logo_MEDGLO_POS.png')} resizeMode="contain" />
                         </View>
-                        <H3 style={styles.headerText}>PRIMEIRO ACESSO</H3>
+                        <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                            PRIMEIRO ACESSO
+                        </Text>
                         <Form style={styles.formContainer}>
                             <Item style={styles.formItem}>
                                 <Text>Senha:</Text>
@@ -131,12 +132,12 @@ const SenhaScreen = () => {
                                 <FontAwesome5 name={isSecurityConfirm ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setIsSecurityConfirm(!isSecurityConfirm)} />
                             </Item>
                             <View style={styles.buttonContainer}>
-                                <Button style={styles.button} rounded onPress={onSubmit}>
+                                <Button style={styles.button} onPress={onSubmit}>
                                     <Text>Cadastrar</Text>
                                 </Button>
                             </View>
                         </Form>
-                    </Content>
+                    </ScrollView>
                 )}
             </ImageBackground>
         </Container>
@@ -155,7 +156,8 @@ const styles = StyleSheet.create({
     input: { flex: 1, fontSize: 14, color: "#000" },
     eyeIcon: { color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginLeft: 10 },
     buttonContainer: { flexDirection: 'row', justifyContent: 'flex-end' },
-    button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR }
+    button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR },
+    borderRadius: 10
 });
 
 export default SenhaScreen;

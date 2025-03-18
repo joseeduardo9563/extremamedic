@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import { View, Alert } from 'react-native';
+import { View, Alert, ScrollView } from 'react-native';
 import ColorsScheme from '../../settings/ColorsScheme';
 import Base from '../../components/Base';
 import HeaderGoBack from '../../components/HeaderGoBack';
 import {
-    Container,
     Input,
     Item,
     Label,
     Form,
-    Content,
     Picker,
     Textarea,
     Text,
     Button,
     Toast,
-    Spinner,
-    H3
 } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { TextInputMask } from 'react-native-masked-text';
@@ -91,7 +87,7 @@ const ContatoScreens = ({ navigation }) => {
     return (
         <Base navigation={navigation}>
             <HeaderGoBack navigation={navigation} title={'Fale Conosco'} />
-            <Content style={{ backgroundColor: '#f8f8f8' }}>
+            <ScrollView style={{ backgroundColor: '#f8f8f8' }}>
                 <Form style={{ marginBottom: 85, backgroundColor: '#fff', padding: 10, paddingRight: 20 }}>
                     <Item stackedLabel>
                         <Label>Nome:*</Label>
@@ -144,7 +140,7 @@ const ContatoScreens = ({ navigation }) => {
                         </Button>
                     </View>
                 </Form>
-            </Content>
+            </ScrollView>
         </Base>
     );
 };

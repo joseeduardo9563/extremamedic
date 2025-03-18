@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
+  ScrollView
 } from "react-native";
 import {
-  Container,
-  Content,
   Text,
   Card,
   CardItem,
   Body,
   Spinner,
-  Form,
-  Picker,
-  Button,
-  H3,
   Input,
 } from "native-base";
 import axios from "axios";
@@ -91,11 +86,11 @@ const EscolhaIsoladaScreen = ({ navigation }) => {
         <Spinner />
       ) : (
         <View style={{ margin: 20 }}>
-          <H3 style={{ fontWeight: "bold", color: ColorsScheme.ASENT_COLOR }}>
+          <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
             BUSCA ISOLADA
-          </H3>
+          </Text>
           <Text style={{ fontSize: 12 }}>{subTitle}</Text>
-          <Content style={{ padding: 20 }}>
+          <ScrollView style={{ padding: 20 }}>
             <Card style={{ marginBottom: 20 }}>
               <Input
                 placeholder="Filtro"
@@ -119,7 +114,7 @@ const EscolhaIsoladaScreen = ({ navigation }) => {
                 <SemInformacao />
               )}
             </Card>
-          </Content>
+          </ScrollView>
         </View>
       )}
     </Base>

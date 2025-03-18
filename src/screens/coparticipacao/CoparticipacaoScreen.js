@@ -4,10 +4,10 @@ import {
   Alert,
   Platform,
   ToastAndroid,
+  ScrollView
 } from "react-native";
 import {
   Container,
-  Content,
   Text,
   Button,
   Picker,
@@ -103,7 +103,7 @@ const CoparticipacaoScreen = ({ navigation }) => {
     <Container>
       <Base navigation={navigation}>
         <HeaderGoBack navigation={navigation} title={"Coparticipação"} />
-        <Content style={{ marginBottom: 55 }}>
+        <ScrollView style={{ marginBottom: 55 }}>
           <View style={{ flex: 1, margin: "4%", padding: 10 }}>
             <Text style={{ fontSize: 15, fontWeight: "bold" }}>
               Informe os dados abaixo para prosseguir
@@ -164,7 +164,7 @@ const CoparticipacaoScreen = ({ navigation }) => {
               <Text>Buscar</Text>
             </Button>
           </View>
-        </Content>
+        </ScrollView>
       </Base>
     </Container>
   );

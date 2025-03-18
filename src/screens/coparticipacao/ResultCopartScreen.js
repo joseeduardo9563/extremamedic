@@ -4,6 +4,7 @@ import {
   Alert,
   Platform,
   ToastAndroid,
+  ScrollView
 } from "react-native";
 import {
   Container,
@@ -11,9 +12,8 @@ import {
   Text,
   Button,
   Card,
-  CardItem,
   Body,
-  Root,
+  NativeBaseProvider,
 } from "native-base";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import numeral from "numeral";
@@ -77,11 +77,11 @@ const ResultCopartScreen = ({ navigation }) => {
   };
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <Container>
         <Base navigation={navigation}>
           <HeaderGoBack navigation={navigation} title={"Coparticipação"} />
-          <Content style={{ marginBottom: 55 }}>
+          <ScrollView style={{ marginBottom: 55 }}>
             {isLoading ? (
               <SpinnerDrawer text="Carregando..." textColor="#000000" spinColor={ColorsScheme.MAIN_COLOR} />
             ) : isFail ? (
@@ -115,10 +115,10 @@ const ResultCopartScreen = ({ navigation }) => {
             ) : (
               <SemInformacao />
             )}
-          </Content>
+          </ScrollView>
         </Base>
       </Container>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

@@ -3,13 +3,13 @@ import {
   View,
   TouchableOpacity,
   Appearance,
+  ScrollView
 } from "react-native";
 import {
   Container,
-  Content,
   Text,
   Button,
-  Root,
+  NativeBaseProvider,
   Grid,
   Col,
   Item,
@@ -56,7 +56,7 @@ const Utilizacoes2Screen = ({ navigation }) => {
   const darkmode = Appearance.getColorScheme();
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <Container>
         <Base navigation={navigation}>
           <DatePicker
@@ -98,7 +98,7 @@ const Utilizacoes2Screen = ({ navigation }) => {
           />
 
           <HeaderGoBack navigation={navigation} title={"Utilizações"} />
-          <Content style={{ marginBottom: 55 }}>
+          <ScrollView style={{ marginBottom: 55 }}>
             <View style={{ margin: 15, padding: 10 }}>
               <Text style={{ fontSize: 15, fontWeight: "bold" }}>INFORME O PERÍODO</Text>
               <Grid>
@@ -150,10 +150,10 @@ const Utilizacoes2Screen = ({ navigation }) => {
                 <Text> Localizar </Text>
               </Button>
             </View>
-          </Content>
+          </ScrollView>
         </Base>
       </Container>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

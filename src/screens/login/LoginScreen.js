@@ -12,9 +12,7 @@ import {
 } from "react-native";
 import {
   Text,
-  Root,
-  Content,
-  H3,
+  NativeBaseProvider,
   Form,
   Item,
   Input,
@@ -73,14 +71,16 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <Root>
+    <NativeBaseProvider>
       <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
       <ImageBackground source={require("../../assets/fundoNovo.png")} style={{ width: "100%", height: "100%", flex: 1 }}>
-        <Content style={{ width: "100%" }}>
+        <ScrollView style={{ width: "100%" }}>
           <View style={{ padding: 20, marginTop: 50, justifyContent: "center", alignItems: "center" }}>
             <Image style={{ width: 200.6, height: 124 }} source={require("../../assets/Logo_MEDGLO_POS.png")} resizeMode="contain" />
           </View>
-          <H3 style={{ padding: 10, textAlign: "center", fontWeight: "bold" }}>AUTENTICAÇÃO</H3>
+          <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+            AUTENTICAÇÃO
+          </Text>
           <ScrollView>
             <Form style={{ padding: 10 }}>
               <Item style={{ flexDirection: "column", alignItems: "flex-start" }}>
@@ -96,10 +96,10 @@ const LoginScreen = ({ navigation }) => {
                   onPress={() => setIsSecurity(!isSecurity)}
                 />
               </Item>
-              <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR }} block rounded onPress={onSubmit}>
+              <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR,  borderRadius: 10 }} block onPress={onSubmit}>
                 <Text>Entrar</Text>
               </Button>
-              <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR }} block rounded onPress={() => navigation.navigate("PrimeiroAcesso")}>
+              <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} block onPress={() => navigation.navigate("PrimeiroAcesso")}>
                 <Text>Primeiro acesso</Text>
               </Button>
               <TouchableOpacity onPress={() => navigation.navigate("RecuperarSenha")}> 
@@ -107,12 +107,12 @@ const LoginScreen = ({ navigation }) => {
               </TouchableOpacity>
             </Form>
           </ScrollView>
-        </Content>
+        </ScrollView>
       </ImageBackground>
       <Button transparent onPress={() => navigation.goBack()} style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0 }}>
         <Icon name="arrow-back" style={{ color: "black" }} />
       </Button>
-    </Root>
+    </NativeBaseProvider>
   );
 };
 

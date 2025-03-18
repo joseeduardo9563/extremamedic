@@ -5,9 +5,9 @@ import {
     Image,
     Dimensions,
     ScrollView,
-    Alert
+    Alert,
 } from 'react-native';
-import { Button, Text, Content, Picker, H3, Grid, Col } from 'native-base';
+import { Button, Text, Picker } from 'native-base';
 import ColorsScheme from '../../settings/ColorsScheme';
 import Base from '../../components/Base';
 import HeaderGoBack from '../../components/HeaderGoBack';
@@ -93,7 +93,7 @@ const ResultadoDetalhesScreen = () => {
     return (
         <Base navigation={navigation}>
             <HeaderGoBack navigation={navigation} title={'Rede Credenciada'} />
-            <Content>
+            <ScrollView>
                 <Overlay isVisible={isVisible} onBackdropPress={() => setIsVisible(false)}>
                     <ScrollView style={{ padding: 20 }}>
                         {informacao.map((info, index) => (
@@ -105,7 +105,9 @@ const ResultadoDetalhesScreen = () => {
                     <View style={{ position: 'absolute', top: 10, right: 10 }}>
                         <FavoriteButton data={data} />
                     </View>
-                    <H3 style={{ textAlign: 'center', fontWeight: 'bold' }}>{isolada ? data.NOME : data.nome_empresa}</H3>
+                    <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                        {isolada ? data.NOME : data.nome_empresa}
+                    </Text>
                     <Text style={{ textAlign: 'center', marginTop: 10 }}>{isolada ? data.ESPECIALIDADE : data.nome_empresa}</Text>
                 </ImageBackground>
                 {detalhes.length > 1 && (
@@ -127,7 +129,7 @@ const ResultadoDetalhesScreen = () => {
                     <FontAwesome5 name="map-marker-alt" style={{ color: 'white', fontSize: 20 }} />
                     <Text>Navegar</Text>
                 </Button>
-            </Content>
+            </ScrollView>
         </Base>
     );
 };

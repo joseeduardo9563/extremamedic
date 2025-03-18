@@ -8,13 +8,12 @@ import {
     ImageBackground,
     TouchableOpacity,
     Alert,
-    ToastAndroid
+    ToastAndroid,
+    ScrollView
 } from 'react-native';
 import {
     Text,
     Container,
-    Content,
-    H3,
     Form,
     Item,
     Input,
@@ -121,7 +120,7 @@ const PrimeiroAcessoDois = () => {
                         <Text style={styles.loadingText}>Cadastrando E-mail...</Text>
                     </View>
                 ) : (
-                    <Content>
+                    <ScrollView>
                         <View style={styles.logoContainer}>
                             <Image
                                 style={styles.logo}
@@ -129,7 +128,9 @@ const PrimeiroAcessoDois = () => {
                                 resizeMode="contain"
                             />
                         </View>
-                        <H3 style={styles.headerText}>PRIMEIRO ACESSO</H3>
+                        <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                            PRIMEIRO ACESSO
+                        </Text>
                         <View style={styles.instructionsContainer}>
                             <Text style={styles.instructionsText}>
                                 {opcao === 'First' ? "Beneficiário não possui e-mail cadastrado." : "Informe um novo email para receber o código de segurança."}
@@ -158,14 +159,13 @@ const PrimeiroAcessoDois = () => {
                                 <Button
                                     disabled={disable}
                                     style={styles.button}
-                                    rounded
                                     onPress={onUpdateEmail}
                                 >
                                     <Text>Prosseguir</Text>
                                 </Button>
                             </View>
                         </Form>
-                    </Content>
+                    </ScrollView>
                 )}
             </ImageBackground>
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -189,7 +189,8 @@ const styles = StyleSheet.create({
     input: { width: '100%', marginTop: 10, fontSize: 14, color: "#000" },
     buttonContainer: { flexDirection: 'row', justifyContent: 'flex-end' },
     button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR },
-    backButton: { position: 'absolute', top: Platform.OS === 'ios' ? 15 : 0 }
+    backButton: { position: 'absolute', top: Platform.OS === 'ios' ? 15 : 0 },
+    borderRadius: 10
 });
 
 export default PrimeiroAcessoDois;

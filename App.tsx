@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer  } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoadingScreen from './src/screens/login/LoadingScreen';
 import SelectScreen from './src/screens/login/SelectScreen';
@@ -32,6 +32,7 @@ import Confirma_notFoundScreen from './src/screens/primeiroAcesso/Confirma_notFo
 import CoparticipacaoScreen from './src/screens/coparticipacao/CoparticipacaoScreen';
 import ResultCopartScreen from './src/screens/coparticipacao/ResultCopartScreen';
 import TermosScreen from './src/screens/termos/TermosScreen';
+import { NativeBaseProvider } from 'native-base';
 
 export type RootStackParamList = {
   Loading: undefined;
@@ -71,41 +72,43 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Loading" component={LoadingScreen} />
-        <Stack.Screen name="SelectIsolada" component={SelectIsoladaScreen} />
-        <Stack.Screen name="Perfil" component={PerfilScreen} />
-        <Stack.Screen name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Intermediary" component={IntermediaryScreen} />
-        <Stack.Screen name="Select" component={SelectScreen} />
-        <Stack.Screen name="Contato" component={ContatoScreens} />
-        <Stack.Screen name="WebView" component={WebViewScreen} />
-        <Stack.Screen name="EscolhaIsolada" component={EscolhaIsoladaScreen} />
-        <Stack.Screen name="ResultadoBusca" component={ResultadoBuscaScreen} />
-        <Stack.Screen name="ResultadoDetalhes" component={ResultadoDetalhesScreen} />
-        <Stack.Screen name="SelectCombinada" component={SelectCombinadaScreen} />
-        <Stack.Screen name="RecuperarSenha" component={RecuperarSenhaScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
-        <Stack.Screen name="PrimeiroAcesso" component={PrimeiroAcessoScreen} />
-        <Stack.Screen name="Senha" component={SenhaScreen} />
-        <Stack.Screen name="PrimeiroAcesso_dois" component={PrimeiroAcesso_doisScreen} />
-        <Stack.Screen name="Financeiro" component={FinanceiroScreen} />
-        <Stack.Screen name="AlterarSenha" component={AlterarSenhaScreen} />
-        <Stack.Screen name="AlterarSenhaDois" component={AlterarSenha_DoisScreen} />
-        <Stack.Screen name="Contrato" component={ContratoScreen} />
-        <Stack.Screen name="Utilizacoes" component={UtilizacoesScreen} />
-        <Stack.Screen name="Utilizacoes2" component={Utilizacoes2Screen} />
-        <Stack.Screen name="Carteirinha" component={CarteirinhaScreen} />
-        <Stack.Screen name="Carteirinha_2" component={Carteirinha_2Screen} />
-        <Stack.Screen name="Confirma" component={ConfirmaScreen} />
-        <Stack.Screen name="Confirma_notFound" component={Confirma_notFoundScreen} />
-        <Stack.Screen name="Coparticipacao" component={CoparticipacaoScreen} />
-        <Stack.Screen name="ResultCopart" component={ResultCopartScreen} />
-        <Stack.Screen name="Termos" component={TermosScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Loading" component={LoadingScreen} />
+          <Stack.Screen name="SelectIsolada" component={SelectIsoladaScreen} />
+          <Stack.Screen name="Perfil" component={PerfilScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Intermediary" component={IntermediaryScreen} />
+          <Stack.Screen name="Select" component={SelectScreen} />
+          <Stack.Screen name="Contato" component={ContatoScreens} />
+          <Stack.Screen name="WebView" component={WebViewScreen} />
+          <Stack.Screen name="EscolhaIsolada" component={EscolhaIsoladaScreen} />
+          <Stack.Screen name="ResultadoBusca" component={ResultadoBuscaScreen} />
+          <Stack.Screen name="ResultadoDetalhes" component={ResultadoDetalhesScreen} />
+          <Stack.Screen name="SelectCombinada" component={SelectCombinadaScreen} />
+          <Stack.Screen name="RecuperarSenha" component={RecuperarSenhaScreen} />
+          <Stack.Screen name="About" component={AboutScreen} />
+          <Stack.Screen name="PrimeiroAcesso" component={PrimeiroAcessoScreen} />
+          <Stack.Screen name="Senha" component={SenhaScreen} />
+          <Stack.Screen name="PrimeiroAcesso_dois" component={PrimeiroAcesso_doisScreen} />
+          <Stack.Screen name="Financeiro" component={FinanceiroScreen} />
+          <Stack.Screen name="AlterarSenha" component={AlterarSenhaScreen} />
+          <Stack.Screen name="AlterarSenhaDois" component={AlterarSenha_DoisScreen} />
+          <Stack.Screen name="Contrato" component={ContratoScreen} />
+          <Stack.Screen name="Utilizacoes" component={UtilizacoesScreen} />
+          <Stack.Screen name="Utilizacoes2" component={Utilizacoes2Screen} />
+          <Stack.Screen name="Carteirinha" component={CarteirinhaScreen} />
+          <Stack.Screen name="Carteirinha_2" component={Carteirinha_2Screen} />
+          <Stack.Screen name="Confirma" component={ConfirmaScreen} />
+          <Stack.Screen name="Confirma_notFound" component={Confirma_notFoundScreen} />
+          <Stack.Screen name="Coparticipacao" component={CoparticipacaoScreen} />
+          <Stack.Screen name="ResultCopart" component={ResultCopartScreen} />
+          <Stack.Screen name="Termos" component={TermosScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 };
 

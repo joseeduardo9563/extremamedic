@@ -6,13 +6,12 @@ import {
     View,
     Keyboard,
     ImageBackground,
-    Alert
+    Alert,
+    ScrollView
 } from 'react-native';
 import {
     Text,
     Container,
-    Content,
-    H3,
     Form,
     Item,
     Input,
@@ -99,11 +98,13 @@ const AlterarSenhaDois = () => {
         <Container>
             <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
             <ImageBackground source={require('../../assets/fundoNovo.png')} style={styles.background}>
-                <Content>
+                <ScrollView>
                     <View style={styles.logoContainer}>
                         <Image style={styles.logo} source={require('../../assets/Logo_MEDGLO_POS.png')} resizeMode="contain" />
                     </View>
-                    <H3 style={styles.title}>ALTERAR SENHA</H3>
+                    <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                        ALTERAR SENHA
+                    </Text>
                     <Form style={styles.formContainer}>
                         <Item style={styles.formItem}>
                             <Text>Nova Senha:</Text>
@@ -116,12 +117,12 @@ const AlterarSenhaDois = () => {
                             <FontAwesome5 name={secureTextEntry1 ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setSecureTextEntry1(!secureTextEntry1)} />
                         </Item>
                         <View style={styles.buttonContainer}>
-                            <Button disabled={disable} style={styles.button} rounded onPress={onSubmit}>
+                            <Button disabled={disable} style={styles.button} onPress={onSubmit}>
                                 <Text>Enviar</Text>
                             </Button>
                         </View>
                     </Form>
-                </Content>
+                </ScrollView>
             </ImageBackground>
             <Button disabled={disable} transparent onPress={() => navigation.goBack()} style={styles.backButton}>
                 <Icon name="arrow-back" style={{ color: 'black' }} />
@@ -141,7 +142,8 @@ const styles = StyleSheet.create({
     eyeIcon: { color: ColorsScheme.ASENT_COLOR, fontSize: 25, position: "absolute", right: 15, top: 10 },
     buttonContainer: { flexDirection: 'row', justifyContent: 'flex-end' },
     button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR },
-    backButton: { position: 'absolute', top: 15 }
+    backButton: { position: 'absolute', top: 15 },
+    borderRadius: 10
 });
 
 export default AlterarSenhaDois;

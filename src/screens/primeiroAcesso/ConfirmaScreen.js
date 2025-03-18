@@ -7,13 +7,12 @@ import {
     Alert,
     TouchableOpacity,
     Platform,
-    ToastAndroid
+    ToastAndroid,
+    ScrollView
 } from 'react-native';
 import {
     Text,
-    Root,
-    Content,
-    H3,
+    NativeBaseProvider,
     Form,
     Item,
     Input,
@@ -98,7 +97,7 @@ const ConfirmaScreen = () => {
     };
 
     return (
-        <Root>
+        <NativeBaseProvider>
             <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
             <ImageBackground source={require('../../assets/fundoNovo.png')} style={{ width: '100%', height: '100%', flex: 1 }}>
                 {isLoading ? (
@@ -107,11 +106,13 @@ const ConfirmaScreen = () => {
                         <Text style={{ color: '#000', textAlign: "center" }}>Enviando código de segurança...</Text>
                     </View>
                 ) : (
-                    <Content style={{ width: '100%' }}>
+                    <ScrollView style={{ width: '100%' }}>
                         <View style={{ padding: 20, marginTop: 50, justifyContent: 'center', alignItems: 'center' }}>
                             <Image style={{ width: 200.6, height: 124 }} source={require('../../assets/Logo_MEDGLO_POS.png')} resizeMode="contain" />
                         </View>
-                        <H3 style={{ padding: 10, textAlign: 'center', fontWeight: 'bold' }}>PRIMEIRO ACESSO</H3>
+                        <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                            PRIMEIRO ACESSO
+                        </Text>
                         <View style={{ margin: 20 }}>
                             <Text style={{ fontSize: 15 }}>Um código de segurança foi enviado para o e-mail {email}</Text>
                             <Text style={{ marginTop: 15, fontSize: 15 }}>Digite o código enviado para prosseguir:</Text>
@@ -160,18 +161,18 @@ const ConfirmaScreen = () => {
                                 <Text style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 15, marginTop: 20 }}>Não recebi o código</Text>
                             </TouchableOpacity>
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-                                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR }} rounded dark onPress={onConfirm}>
+                                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} dark onPress={onConfirm}>
                                     <Text>Prosseguir</Text>
                                 </Button>
                             </View>
                         </Form>
-                    </Content>
+                    </ScrollView>
                 )}
             </ImageBackground>
             <Button transparent onPress={() => navigation.goBack()} style={{ position: 'absolute', top: Platform.OS === 'ios' ? 15 : 0 }}>
                 <Icon name="arrow-back" style={{ color: 'black' }} />
             </Button>
-        </Root>
+        </NativeBaseProvider>
     );
 };
 
