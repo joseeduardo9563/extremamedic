@@ -41,15 +41,20 @@ const SelectScreen = ({ navigation }) => {
           <Image style={{ width: 200.6, height: 124, alignSelf: "center" }} source={require("../../assets/Logo_MEDGLO_POS.png")} resizeMode="contain" />
           <View style={{ marginTop: 180, justifyContent: "center" }}>
             <Button
-              style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR,  borderRadius: 10 }}
+              style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR,  borderRadius: 20 }}
               block
               onPress={() => navigation.navigate("Login")}
             >
-              <Text style={{ fontSize: 11, textAlign: "center" }}>JÁ SOU BENEFICIÁRIO MedicGLOBAL</Text>
+              <Text style={{ fontSize: 11, textAlign: "center", color: "#FFFFFF" }}>{"JÁ SOU BENEFICIÁRIO MedicGLOBAL".toUpperCase()}</Text>
             </Button>
             <Button
-              style={{ margin: 10, borderColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }}
-              bordered
+              style={{ 
+                margin: 10, 
+                borderColor: ColorsScheme.ASENT_COLOR, 
+                backgroundColor: "transparent", 
+                borderRadius: 20,
+                borderWidth: 1 
+              }}
               block
               onPress={() => navigation.navigate("SelectIsolada")}
             >

@@ -78,20 +78,20 @@ const LoginScreen = ({ navigation }) => {
           <View style={{ padding: 20, marginTop: 50, justifyContent: "center", alignItems: "center" }}>
             <Image style={{ width: 200.6, height: 124 }} source={require("../../assets/Logo_MEDGLO_POS.png")} resizeMode="contain" />
           </View>
-          <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+          <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: "#000000" }}>
             AUTENTICAÇÃO
           </Text>
           <View style={{ padding: 10 }}>
             <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
-              <Text style={{ marginBottom: -13 }}>Matrícula:</Text>
+              <Text style={{ marginBottom: 13 }}>Matrícula:</Text>
               <Input style={{ width: "100%", marginTop: 10, marginBottom: -10, color: "#000000" }} keyboardType="number-pad" onChangeText={setMatricula} />
             </View>
             <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
-              <Text style={{ marginBottom: -13 }}>Senha:</Text>
+              <Text style={{ marginBottom: 13 }}>Senha:</Text>
               <Input secureTextEntry={isSecurity} style={{ width: "80%", marginTop: 10, marginBottom: -10, color: "#000000" }} onChangeText={setSenha} autoCapitalize="none" />
               <FontAwesome5
                 name={isSecurity ? "eye" : "eye-slash"}
-                style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginTop: -20, position: "relative", left: "85%" }}
+                style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginTop: -35, position: "relative", left: "85%" }}
                 onPress={() => setIsSecurity(!isSecurity)}
               />
             </View>
