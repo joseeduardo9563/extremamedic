@@ -12,8 +12,7 @@ import {
 import {
   Text,
   NativeBaseProvider,
-  Form,
-  Item,
+  ArrowBackIcon,
   Input,
   Button,
   Icon,
@@ -76,17 +75,43 @@ const RecuperarSenha = ({ navigation }) => {
             <View style={{ padding: 20, marginTop: 50, justifyContent: "center", alignItems: "center" }}>
               <Image style={{ width: 200.6, height: 124 }} source={require("../../assets/Logo_MEDGLO_POS.png")} resizeMode="contain" />
             </View>
-            <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+            <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: "#000000" }}>
               RECUPERAR SENHA
             </Text>
             <View style={{ padding: 10 }}>
               <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
                 <Text>CPF:</Text>
-                <TextInputMask type="cpf" style={{ width: "100%", fontSize: 14, color: "#000" }} value={cpf} onChangeText={setCpf} keyboardType="number-pad" />
+                <TextInputMask 
+                  type="cpf" 
+                  style={{ 
+                    width: "100%", 
+                    fontSize: 14, 
+                    color: "#000", 
+                    borderWidth: 1, 
+                    borderRadius: 5,
+                    borderColor: "#c2c2c2"
+                  }} 
+                    value={cpf} 
+                    onChangeText={setCpf} 
+                    keyboardType="number-pad" 
+                  />
               </View>
               <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
                 <Text>Data de nascimento:</Text>
-                <TextInputMask type="datetime" options={{ format: "DD/MM/YYYY" }} style={{ width: "100%", fontSize: 14, color: "#000" }} value={dataNascimento} onChangeText={setDataNascimento} />
+                <TextInputMask 
+                  type="datetime" 
+                  options={{ format: "DD/MM/YYYY" }} 
+                  style={{ 
+                    width: "100%", 
+                    fontSize: 14, 
+                    color: "#000",
+                    borderWidth: 1, 
+                    borderRadius: 5,
+                    borderColor: "#c2c2c2"
+                  }} 
+                  value={dataNascimento} 
+                  onChangeText={setDataNascimento} 
+                />
               </View>
               <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
                 <Text>Matrícula:</Text>
@@ -97,16 +122,23 @@ const RecuperarSenha = ({ navigation }) => {
                 <Input style={{ width: "100%", fontSize: 14, color: "#000" }} onChangeText={setNomeMae} />
               </View>
               <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }}  onPress={recuperar}>
-                  <Text>Enviar</Text>
+                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 20 }}  onPress={recuperar}>
+                  <Text style={{
+                    color: "#FFFFFF"
+                  }}>
+                    Enviar
+                  </Text>
                 </Button>
               </View>
             </View>
           </ScrollView>
         )}
       </ImageBackground>
-      <Button transparent onPress={() => navigation.goBack()} style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0 }}>
-        <Icon name="arrow-back" style={{ color: "black" }} />
+      <Button 
+        onPress={() => navigation.goBack()} 
+        style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0, backgroundColor: "transparent"}}
+      >
+        <ArrowBackIcon size="5" mt="0.5" color="#000000" />
       </Button>
     </NativeBaseProvider>
   );

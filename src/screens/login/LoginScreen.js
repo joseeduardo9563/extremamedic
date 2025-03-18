@@ -13,11 +13,8 @@ import {
 import {
   Text,
   NativeBaseProvider,
-  Form,
-  Item,
   Input,
   Button,
-  Icon,
   ArrowBackIcon
 } from "native-base";
 import axios from "axios";
