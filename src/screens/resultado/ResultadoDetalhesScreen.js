@@ -95,11 +95,11 @@ const ResultadoDetalhesScreen = () => {
             <HeaderGoBack navigation={navigation} title={'Rede Credenciada'} />
             <ScrollView>
                 <Overlay isVisible={isVisible} onBackdropPress={() => setIsVisible(false)}>
-                    <ScrollView style={{ padding: 20 }}>
+                    <View style={{ padding: 20 }}>
                         {informacao.map((info, index) => (
                             <Text key={index} style={{ margin: 10 }}>{info}</Text>
                         ))}
-                    </ScrollView>
+                    </View>
                 </Overlay>
                 <ImageBackground source={require('../../assets/IMAGEMFUNDO.png')} style={{ width: '100%', height: 200, justifyContent: 'center', alignItems: 'center' }}>
                     <View style={{ position: 'absolute', top: 10, right: 10 }}>

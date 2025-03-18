@@ -81,32 +81,30 @@ const LoginScreen = ({ navigation }) => {
           <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
             AUTENTICAÇÃO
           </Text>
-          <ScrollView>
-            <View style={{ padding: 10 }}>
-              <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
-                <Text style={{ marginBottom: -13 }}>Matrícula:</Text>
-                <Input style={{ width: "100%", marginTop: 10, marginBottom: -10, color: "#000000" }} keyboardType="number-pad" onChangeText={setMatricula} />
-              </View>
-              <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
-                <Text style={{ marginBottom: -13 }}>Senha:</Text>
-                <Input secureTextEntry={isSecurity} style={{ width: "80%", marginTop: 10, marginBottom: -10, color: "#000000" }} onChangeText={setSenha} autoCapitalize="none" />
-                <FontAwesome5
-                  name={isSecurity ? "eye" : "eye-slash"}
-                  style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginTop: -20, position: "relative", left: "85%" }}
-                  onPress={() => setIsSecurity(!isSecurity)}
-                />
-              </View>
-              <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR,  borderRadius: 10 }} block onPress={onSubmit}>
-                <Text>Entrar</Text>
-              </Button>
-              <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} block onPress={() => navigation.navigate("PrimeiroAcesso")}>
-                <Text>Primeiro acesso</Text>
-              </Button>
-              <TouchableOpacity onPress={() => navigation.navigate("RecuperarSenha")}> 
-                <Text style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 15, marginTop: 20, alignSelf: "center" }}>Recuperar senha</Text>
-              </TouchableOpacity>
+          <View style={{ padding: 10 }}>
+            <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
+              <Text style={{ marginBottom: -13 }}>Matrícula:</Text>
+              <Input style={{ width: "100%", marginTop: 10, marginBottom: -10, color: "#000000" }} keyboardType="number-pad" onChangeText={setMatricula} />
             </View>
-          </ScrollView>
+            <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
+              <Text style={{ marginBottom: -13 }}>Senha:</Text>
+              <Input secureTextEntry={isSecurity} style={{ width: "80%", marginTop: 10, marginBottom: -10, color: "#000000" }} onChangeText={setSenha} autoCapitalize="none" />
+              <FontAwesome5
+                name={isSecurity ? "eye" : "eye-slash"}
+                style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginTop: -20, position: "relative", left: "85%" }}
+                onPress={() => setIsSecurity(!isSecurity)}
+              />
+            </View>
+            <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} block onPress={onSubmit}>
+              <Text>Entrar</Text>
+            </Button>
+            <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} block onPress={() => navigation.navigate("PrimeiroAcesso")}>
+              <Text>Primeiro acesso</Text>
+            </Button>
+            <TouchableOpacity onPress={() => navigation.navigate("RecuperarSenha")}>
+              <Text style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 15, marginTop: 20, alignSelf: "center" }}>Recuperar senha</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </ImageBackground>
       <Button transparent onPress={() => navigation.goBack()} style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0 }}>
