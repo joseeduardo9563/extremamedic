@@ -105,23 +105,23 @@ const AlterarSenhaDois = () => {
                     <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
                         ALTERAR SENHA
                     </Text>
-                    <Form style={styles.formContainer}>
-                        <Item style={styles.formItem}>
+                    <View style={styles.formContainer}>
+                        <View style={styles.formItem}>
                             <Text>Nova Senha:</Text>
                             <Input secureTextEntry={secureTextEntry} onChangeText={setNovaSenha} style={styles.input} />
                             <FontAwesome5 name={secureTextEntry ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setSecureTextEntry(!secureTextEntry)} />
-                        </Item>
-                        <Item style={styles.formItem}>
+                        </View>
+                        <View style={styles.formItem}>
                             <Text>Confirme sua senha:</Text>
                             <Input secureTextEntry={secureTextEntry1} onChangeText={setConfirmarSenha} style={styles.input} />
                             <FontAwesome5 name={secureTextEntry1 ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setSecureTextEntry1(!secureTextEntry1)} />
-                        </Item>
+                        </View>
                         <View style={styles.buttonContainer}>
                             <Button disabled={disable} style={styles.button} onPress={onSubmit}>
                                 <Text>Enviar</Text>
                             </Button>
                         </View>
-                    </Form>
+                    </View>
                 </ScrollView>
             </ImageBackground>
             <Button disabled={disable} transparent onPress={() => navigation.goBack()} style={styles.backButton}>

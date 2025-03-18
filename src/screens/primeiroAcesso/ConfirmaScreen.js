@@ -117,14 +117,14 @@ const ConfirmaScreen = () => {
                             <Text style={{ fontSize: 15 }}>Um código de segurança foi enviado para o e-mail {email}</Text>
                             <Text style={{ marginTop: 15, fontSize: 15 }}>Digite o código enviado para prosseguir:</Text>
                         </View>
-                        <Form style={{ padding: 10 }}>
-                            <Item style={{ flexDirection: 'column', alignItems: 'flex-start', paddingTop: 10 }}>
+                        <View style={{ padding: 10 }}>
+                            <View style={{ flexDirection: 'column', alignItems: 'flex-start', paddingTop: 10 }}>
                                 <Text style={{ marginBottom: -13 }}>Código de segurança:</Text>
                                 <Input style={{ width: '100%', marginTop: 10, marginBottom: -10, fontSize: 14, color: "#000" }}
                                     keyboardType='number-pad'
                                     onChangeText={setValue}
                                 />
-                            </Item>
+                            </View>
                             <TouchableOpacity onPress={() => {
                                 Alert.alert(
                                     "Não recebi o código",
@@ -165,7 +165,7 @@ const ConfirmaScreen = () => {
                                     <Text>Prosseguir</Text>
                                 </Button>
                             </View>
-                        </Form>
+                        </View>
                     </ScrollView>
                 )}
             </ImageBackground>

@@ -114,29 +114,29 @@ const PrimeiroAcesso = () => {
                             <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
                                 PRIMEIRO ACESSO
                             </Text>
-                        <Form style={styles.formContainer}>
-                            <Item style={styles.formItem}>
+                        <View style={styles.formContainer}>
+                            <View style={styles.formItem}>
                                 <Text>Matrícula:</Text>
                                 <Input keyboardType='number-pad' value={matricula} onChangeText={setMatricula} />
-                            </Item>
-                            <Item style={styles.formItem}>
+                            </View>
+                            <View style={styles.formItem}>
                                 <Text>CPF:</Text>
                                 <TextInputMask type="cpf" value={cpf} onChangeText={setCpf} keyboardType='number-pad' style={styles.input} />
-                            </Item>
-                            <Item style={styles.formItem}>
+                            </View>
+                            <View style={styles.formItem}>
                                 <Text>Data de nascimento:</Text>
                                 <TextInputMask type="datetime" options={{ format: "DD/MM/YYYY" }} value={dataNascimento} onChangeText={setDataNascimento} style={styles.input} />
-                            </Item>
-                            <Item style={styles.formItem}>
+                            </View>
+                            <View style={styles.formItem}>
                                 <Text>Primeiro nome da mãe:</Text>
                                 <Input value={mae} onChangeText={setMae} />
-                            </Item>
+                            </View>
                             <View style={styles.buttonContainer}>
                                 <Button style={styles.button} onPress={onSubmit}>
                                     <Text>Prosseguir</Text>
                                 </Button>
                             </View>
-                        </Form>
+                        </View>
                     </ScrollView>
                 )}
             </ImageBackground>

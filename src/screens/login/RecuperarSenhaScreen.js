@@ -79,29 +79,29 @@ const RecuperarSenha = ({ navigation }) => {
             <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
               RECUPERAR SENHA
             </Text>
-            <Form style={{ padding: 10 }}>
-              <Item style={{ flexDirection: "column", alignItems: "flex-start" }}>
+            <View style={{ padding: 10 }}>
+              <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
                 <Text>CPF:</Text>
                 <TextInputMask type="cpf" style={{ width: "100%", fontSize: 14, color: "#000" }} value={cpf} onChangeText={setCpf} keyboardType="number-pad" />
-              </Item>
-              <Item style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
+              </View>
+              <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
                 <Text>Data de nascimento:</Text>
                 <TextInputMask type="datetime" options={{ format: "DD/MM/YYYY" }} style={{ width: "100%", fontSize: 14, color: "#000" }} value={dataNascimento} onChangeText={setDataNascimento} />
-              </Item>
-              <Item style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
+              </View>
+              <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
                 <Text>Matrícula:</Text>
                 <Input style={{ width: "100%", fontSize: 14, color: "#000" }} keyboardType="number-pad" onChangeText={setMatricula} />
-              </Item>
-              <Item style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
+              </View>
+              <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
                 <Text>Primeiro nome da mãe:</Text>
                 <Input style={{ width: "100%", fontSize: 14, color: "#000" }} onChangeText={setNomeMae} />
-              </Item>
+              </View>
               <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
                 <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }}  onPress={recuperar}>
                   <Text>Enviar</Text>
                 </Button>
               </View>
-            </Form>
+            </View>
           </ScrollView>
         )}
       </ImageBackground>

@@ -120,23 +120,23 @@ const SenhaScreen = () => {
                         <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
                             PRIMEIRO ACESSO
                         </Text>
-                        <Form style={styles.formContainer}>
-                            <Item style={styles.formItem}>
+                        <View style={styles.formContainer}>
+                            <View style={styles.formItem}>
                                 <Text>Senha:</Text>
                                 <TextInput style={styles.input} secureTextEntry={isSecurity} autoCapitalize="none" onChangeText={setSenha} />
                                 <FontAwesome5 name={isSecurity ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setIsSecurity(!isSecurity)} />
-                            </Item>
-                            <Item style={styles.formItem}>
+                            </View>
+                            <View style={styles.formItem}>
                                 <Text>Confirme a Senha:</Text>
                                 <TextInput style={styles.input} secureTextEntry={isSecurityConfirm} autoCapitalize="none" onChangeText={setConfirmSenha} />
                                 <FontAwesome5 name={isSecurityConfirm ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setIsSecurityConfirm(!isSecurityConfirm)} />
-                            </Item>
+                            </View>
                             <View style={styles.buttonContainer}>
                                 <Button style={styles.button} onPress={onSubmit}>
                                     <Text>Cadastrar</Text>
                                 </Button>
                             </View>
-                        </Form>
+                        </View>
                     </ScrollView>
                 )}
             </ImageBackground>

@@ -137,23 +137,23 @@ const PrimeiroAcessoDois = () => {
                             </Text>
                             <Text style={styles.instructionsText}>Digite um endereço de e-mail para prosseguir:</Text>
                         </View>
-                        <Form style={styles.formContainer}>
-                            <Item style={styles.formItem}>
+                        <View style={styles.formContainer}>
+                            <View style={styles.formItem}>
                                 <Text>E-mail:</Text>
                                 <Input
                                     style={styles.input}
                                     autoCorrect={false}
                                     onChangeText={setEmail}
                                 />
-                            </Item>
+                            </View>
                             {opcao === 'not_found' && email ? (
-                                <Item style={styles.formItem}>
+                                <View style={styles.formItem}>
                                     <Text>Primeiro nome da mãe:</Text>
                                     <Input
                                         style={styles.input}
                                         onChangeText={setConfirmMae}
                                     />
-                                </Item>
+                                </View>
                             ) : null}
                             <View style={styles.buttonContainer}>
                                 <Button
@@ -164,7 +164,7 @@ const PrimeiroAcessoDois = () => {
                                     <Text>Prosseguir</Text>
                                 </Button>
                             </View>
-                        </Form>
+                        </View>
                     </ScrollView>
                 )}
             </ImageBackground>

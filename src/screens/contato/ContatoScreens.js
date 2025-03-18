@@ -88,33 +88,33 @@ const ContatoScreens = ({ navigation }) => {
         <Base navigation={navigation}>
             <HeaderGoBack navigation={navigation} title={'Fale Conosco'} />
             <ScrollView style={{ backgroundColor: '#f8f8f8' }}>
-                <Form style={{ marginBottom: 85, backgroundColor: '#fff', padding: 10, paddingRight: 20 }}>
-                    <Item stackedLabel>
-                        <Label>Nome:*</Label>
+                <View style={{ padding: 10 }}>
+                    <View style={{ marginBottom: 10 }}>
+                        <Text>Nome:*</Text>
                         <Input value={formData.nome} onChangeText={(val) => handleInputChange('nome', val)} />
-                    </Item>
-                    <Item stackedLabel>
-                        <Label>E-mail:*</Label>
+                    </View>
+                    <View style={{ marginBottom: 10 }}>
+                        <Text>E-mail:*</Text>
                         <Input value={formData.email} onChangeText={(val) => handleInputChange('email', val)} autoCapitalize="none" />
-                    </Item>
-                    <Item stackedLabel>
-                        <Label>Telefone:</Label>
+                    </View>
+                    <View style={{ marginBottom: 10 }}>
+                        <Text>Telefone:</Text>
                         <TextInputMask
                             type={'cel-phone'}
                             value={formData.telefone}
                             onChangeText={(val) => handleInputChange('telefone', val)}
                         />
-                    </Item>
-                    <Item stackedLabel>
-                        <Label>Cidade:*</Label>
+                    </View>
+                    <View style={{ marginBottom: 10 }}>
+                        <Text>Cidade:*</Text>
                         <Input value={formData.cidade} onChangeText={(val) => handleInputChange('cidade', val)} />
-                    </Item>
-                    <Item stackedLabel>
-                        <Label>UF:*</Label>
+                    </View>
+                    <View style={{ marginBottom: 10 }}>
+                        <Text>UF:*</Text>
                         <Input value={formData.UF} onChangeText={(val) => handleInputChange('UF', val)} />
-                    </Item>
-                    <Item stackedLabel>
-                        <Label>Setor:</Label>
+                    </View>
+                    <View style={{ marginBottom: 10 }}>
+                        <Text>Setor:</Text>
                         <Picker
                             selectedValue={formData.selectedSetor}
                             onValueChange={(val) => handleInputChange('selectedSetor', val)}
@@ -122,9 +122,9 @@ const ContatoScreens = ({ navigation }) => {
                             <Picker.Item label="Ouvidoria" value="1" />
                             <Picker.Item label="Comercial" value="2" />
                         </Picker>
-                    </Item>
-                    <Item stackedLabel>
-                        <Label>Mensagem:</Label>
+                    </View>
+                    <View style={{ marginBottom: 10 }}>
+                        <Text>Mensagem:</Text>
                         <Textarea
                             rowSpan={4}
                             maxLength={2000}
@@ -132,14 +132,14 @@ const ContatoScreens = ({ navigation }) => {
                             value={formData.mensagem}
                             onChangeText={(val) => handleInputChange('mensagem', val)}
                         />
-                    </Item>
+                    </View>
                     <Text style={{ marginLeft: "5%", fontSize: 12 }}>{`${formData.mensagem.length}/2000`}</Text>
                     <View style={{ flexDirection: 'column', paddingTop: 50 }}>
                         <Button onPress={enviarContato} disabled={formData.isDisable}>
                             <Text style={{ textAlign: 'center', width: '100%' }}>Enviar</Text>
                         </Button>
                     </View>
-                </Form>
+                </View>
             </ScrollView>
         </Base>
     );

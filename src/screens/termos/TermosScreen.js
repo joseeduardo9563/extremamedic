@@ -83,8 +83,8 @@ const TermosScreen = () => {
               <View style={styles.termsContainer}>
                 <ScrollView nestedScrollEnabled>
                   <Text style={styles.text}>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</Text>
-                  <Form>
-                    <Item style={styles.checkboxItem}>
+                  <View>
+                    <View style={styles.checkboxItem}>
                       <CheckBox
                         onPress={() => setCheckTermo(!checkTermo)}
                         checked={checkTermo}
@@ -93,8 +93,8 @@ const TermosScreen = () => {
                       <Body>
                         <Text style={styles.checkboxText}>Li e aceito os termos de compromisso.</Text>
                       </Body>
-                    </Item>
-                  </Form>
+                    </View>
+                  </View>
                 </ScrollView>
               </View>
               {checkTermo && (

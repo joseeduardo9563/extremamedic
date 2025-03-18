@@ -82,12 +82,12 @@ const LoginScreen = ({ navigation }) => {
             AUTENTICAÇÃO
           </Text>
           <ScrollView>
-            <Form style={{ padding: 10 }}>
-              <Item style={{ flexDirection: "column", alignItems: "flex-start" }}>
+            <View style={{ padding: 10 }}>
+              <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
                 <Text style={{ marginBottom: -13 }}>Matrícula:</Text>
                 <Input style={{ width: "100%", marginTop: 10, marginBottom: -10, color: "#000000" }} keyboardType="number-pad" onChangeText={setMatricula} />
-              </Item>
-              <Item style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
+              </View>
+              <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
                 <Text style={{ marginBottom: -13 }}>Senha:</Text>
                 <Input secureTextEntry={isSecurity} style={{ width: "80%", marginTop: 10, marginBottom: -10, color: "#000000" }} onChangeText={setSenha} autoCapitalize="none" />
                 <FontAwesome5
@@ -95,7 +95,7 @@ const LoginScreen = ({ navigation }) => {
                   style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginTop: -20, position: "relative", left: "85%" }}
                   onPress={() => setIsSecurity(!isSecurity)}
                 />
-              </Item>
+              </View>
               <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR,  borderRadius: 10 }} block onPress={onSubmit}>
                 <Text>Entrar</Text>
               </Button>
@@ -105,7 +105,7 @@ const LoginScreen = ({ navigation }) => {
               <TouchableOpacity onPress={() => navigation.navigate("RecuperarSenha")}> 
                 <Text style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 15, marginTop: 20, alignSelf: "center" }}>Recuperar senha</Text>
               </TouchableOpacity>
-            </Form>
+            </View>
           </ScrollView>
         </ScrollView>
       </ImageBackground>
