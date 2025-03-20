@@ -16,11 +16,13 @@ import {
   Input,
   Button,
   ArrowBackIcon,
-  DeleteIcon,
-  Icon
+  ChevronDownIcon,
+  ChevronUpIcon
 } from "native-base";
 import axios from "axios";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons"
+import Icon from "react-native-vector-icons/Ionicons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ColorsScheme from "../../settings/ColorsScheme";
 import Server from "../../settings/Server";
@@ -84,13 +86,13 @@ const LoginScreen = ({ navigation }) => {
           <View style={{ padding: 10 }}>
             <View style={{ flexDirection: "column", alignItems: "flex-start" }}>
               <Text style={{ marginBottom: 13 }}>Matrícula:</Text>
-              <Input style={{ width: "100%", marginTop: 10, marginBottom: -10, color: "#000000" }} keyboardType="number-pad" onChangeText={setMatricula} />
+              <Input style={{ width: "100%", color: "#000000", fontSize: 18 }} keyboardType="number-pad" onChangeText={setMatricula} />
             </View>
             <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
               <Text style={{ marginBottom: 13 }}>Senha:</Text>
               <Input 
                 secureTextEntry={isSecurity} 
-                style={{ width: "80%", marginTop: 10, marginBottom: -10, color: "#000000" }} 
+                style={{ width: "80%", color: "#000000", fontSize: 18 }} 
                 onChangeText={setSenha} autoCapitalize="none" 
               />
               
@@ -103,22 +105,24 @@ const LoginScreen = ({ navigation }) => {
                   right: "5%"
                 }}
               >
-                <Icon
-                  as={FontAwesome5}
-                  size="5"
-                  mt="0.5"
-                  name={isSecurity ? "eye" : "eye-slash"}
-                  color={ColorsScheme.ASENT_COLOR}
-                  onPress={() => setIsSecurity(!isSecurity)}
-                  style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
-                />
-                {/* <DeleteIcon
-                  size="5"
-                  mt="0.5"
-                  color={ColorsScheme.ASENT_COLOR}
-                  onPress={() => setIsSecurity(!isSecurity)}
-                  style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
-                /> */}
+                {isSecurity ? (
+                  <ChevronDownIcon
+                    size="5"
+                    mt="0.5"
+                    color={ColorsScheme.ASENT_COLOR}
+                    onPress={() => setIsSecurity(!isSecurity)}
+                    style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                  />
+                ) : (
+                  <ChevronUpIcon
+                    size="5"
+                    mt="0.5"
+                    color={ColorsScheme.ASENT_COLOR}
+                    onPress={() => setIsSecurity(!isSecurity)}
+                    style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                  />
+                )}
+                
               </View>
             </View>
             <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 20 }} block onPress={onSubmit}>
