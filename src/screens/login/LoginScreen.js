@@ -15,7 +15,9 @@ import {
   NativeBaseProvider,
   Input,
   Button,
-  ArrowBackIcon
+  ArrowBackIcon,
+  DeleteIcon,
+  Icon
 } from "native-base";
 import axios from "axios";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
@@ -86,12 +88,38 @@ const LoginScreen = ({ navigation }) => {
             </View>
             <View style={{ flexDirection: "column", alignItems: "flex-start", paddingTop: 10 }}>
               <Text style={{ marginBottom: 13 }}>Senha:</Text>
-              <Input secureTextEntry={isSecurity} style={{ width: "80%", marginTop: 10, marginBottom: -10, color: "#000000" }} onChangeText={setSenha} autoCapitalize="none" />
-              <FontAwesome5
-                name={isSecurity ? "eye" : "eye-slash"}
-                style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginTop: -35, position: "relative", left: "85%" }}
-                onPress={() => setIsSecurity(!isSecurity)}
+              <Input 
+                secureTextEntry={isSecurity} 
+                style={{ width: "80%", marginTop: 10, marginBottom: -10, color: "#000000" }} 
+                onChangeText={setSenha} autoCapitalize="none" 
               />
+              
+              <View
+                style={{
+                  width: "100%",
+                  alignItems: "flex-end",
+                  position: "absolute",
+                  top: "70%",
+                  right: "5%"
+                }}
+              >
+                <Icon
+                  as={FontAwesome5}
+                  size="5"
+                  mt="0.5"
+                  name={isSecurity ? "eye" : "eye-slash"}
+                  color={ColorsScheme.ASENT_COLOR}
+                  onPress={() => setIsSecurity(!isSecurity)}
+                  style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                />
+                {/* <DeleteIcon
+                  size="5"
+                  mt="0.5"
+                  color={ColorsScheme.ASENT_COLOR}
+                  onPress={() => setIsSecurity(!isSecurity)}
+                  style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                /> */}
+              </View>
             </View>
             <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 20 }} block onPress={onSubmit}>
               <Text style={{
