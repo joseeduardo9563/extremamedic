@@ -53,7 +53,8 @@ const LoginScreen = ({ navigation }) => {
       Keyboard.dismiss();
       try {
         const hash = await CryptoJS.SHA1(senha).toString();
-        const url = `${Server.API}login/autenticate.asp?matricula=${matricula}&senha=${hash}`;
+        const url = `${Server.API}login/autenticate.asp?matricula=${matricula}&senha=${hash.toUpperCase()}`;
+        console.log(url);
         const response = await fetch(url);
         const responseJson = await response.json();
 

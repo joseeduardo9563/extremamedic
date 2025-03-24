@@ -62,44 +62,42 @@ const ContratoScreen = ({ navigation }) => {
 
   return (
     <NativeBaseProvider>
-      <Container>
-        <Base navigation={navigation}>
-          <HeaderGoBack navigation={navigation} title={"Contratos"} />
-          <ScrollView style={{ marginBottom: 55, backgroundColor: "#FFFFFF" }}>
-            {isLoading ? (
-              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
-                <Spinner color={ColorsScheme.MAIN_COLOR} />
-                <Text style={{ color: "#000000", textAlign: "center" }}>Buscando...</Text>
-              </View>
-            ) : contratos.length > 0 ? (
-              <View style={{ backgroundColor: "white", margin: 20, marginTop: 30 }}>
-                <Card>
-                  {contratos.map((item, index) => (
-                    <CardItem style={{ marginTop: 13 }} bordered key={index}>
-                      <Body>
-                        <Text style={{ fontSize: 16, fontWeight: "bold", marginBottom: 10 }}>{item.plano}</Text>
-                        <Text style={{ fontSize: 12, marginBottom: 10 }}>CNS: {item.cns}</Text>
-                        <Text style={{ fontSize: 12, marginBottom: 10 }}>ACOMODAÇÃO: {item.acomodacao}</Text>
-                        <Text style={{ fontSize: 12, marginBottom: 10 }}>Cobertura: {item.cobertura}</Text>
-                        <Text style={{ fontSize: 12, marginBottom: 10 }}>Data do contrato: {item.data_contrato}</Text>
-                      </Body>
-                    </CardItem>
-                  ))}
-                </Card>
-                <Button
-                  block
-                  style={{ marginTop: 25, backgroundColor: ColorsScheme.MAIN_COLOR, margin: 7 }}
-                  onPress={() => navigation.navigate("Contato")}
-                >
-                  <Text style={{ fontWeight: "bold" }}>Dúvidas? Fale com a MedicGLOBAL</Text>
-                </Button>
-              </View>
-            ) : (
-              <SemInformacao />
-            )}
-          </ScrollView>
-        </Base>
-      </Container>
+      <Base navigation={navigation}>
+        <HeaderGoBack navigation={navigation} title={"Contratos"} />
+        <ScrollView style={{ marginBottom: 55, backgroundColor: "#FFFFFF" }}>
+          {isLoading ? (
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
+              <Spinner color={ColorsScheme.MAIN_COLOR} />
+              <Text style={{ color: "#000000", textAlign: "center" }}>Buscando...</Text>
+            </View>
+          ) : contratos.length > 0 ? (
+            <View style={{ backgroundColor: "white", margin: 20, marginTop: 30 }}>
+              <Card>
+                {contratos.map((item, index) => (
+                  <CardItem style={{ marginTop: 13 }} bordered key={index}>
+                    <Body>
+                      <Text style={{ fontSize: 16, fontWeight: "bold", marginBottom: 10 }}>{item.plano}</Text>
+                      <Text style={{ fontSize: 12, marginBottom: 10 }}>CNS: {item.cns}</Text>
+                      <Text style={{ fontSize: 12, marginBottom: 10 }}>ACOMODAÇÃO: {item.acomodacao}</Text>
+                      <Text style={{ fontSize: 12, marginBottom: 10 }}>Cobertura: {item.cobertura}</Text>
+                      <Text style={{ fontSize: 12, marginBottom: 10 }}>Data do contrato: {item.data_contrato}</Text>
+                    </Body>
+                  </CardItem>
+                ))}
+              </Card>
+              <Button
+                block
+                style={{ marginTop: 25, backgroundColor: ColorsScheme.MAIN_COLOR, margin: 7 }}
+                onPress={() => navigation.navigate("Contato")}
+              >
+                <Text style={{ fontWeight: "bold" }}>Dúvidas? Fale com a MedicGLOBAL</Text>
+              </Button>
+            </View>
+          ) : (
+            <SemInformacao />
+          )}
+        </ScrollView>
+      </Base>
     </NativeBaseProvider>
   );
 };

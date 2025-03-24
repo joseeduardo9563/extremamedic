@@ -47,14 +47,15 @@ const PrimeiroAcesso = () => {
         if (cpf && dataNascimento && matricula && mae) {
             setIsLoading(true);
             const url = `${Server.API}primeiroAcesso/testeFirst.asp?matricula=${matricula}`;
-
+            console.log(url);
             fetch(url)
                 .then(response => response.json())
                 .then(responseJson => {
                     setIsLoading(false);
+                    console.log(responseJson)
                     if (responseJson.isBenefNet) {
                         Alert.alert("Matrícula já cadastrada", "Use a opção Recuperar Senha ou entre em contato com a operadora.");
-                    } else if (!responseJson.isBenef) {
+                    } else if (responseJson.isBenef == false) {
                         Alert.alert("Beneficiário não encontrado", "Verifique os dados informados ou procure a operadora.");
                     } else {
                         processBeneficiary(responseJson);

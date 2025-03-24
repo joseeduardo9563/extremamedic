@@ -14,13 +14,13 @@ import {
 } from 'react-native';
 import {
     Text,
-    Container,
-    Form,
-    Item,
-    Input,
     Button,
     Icon,
-    Spinner
+    Spinner,
+    NativeBaseProvider,
+    Input,
+    ChevronDownIcon,
+    ChevronUpIcon
 } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import ColorsScheme from '../../settings/ColorsScheme';
@@ -32,7 +32,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 const SenhaScreen = () => {
     const navigation = useNavigation();
     const route = useRoute();
-    
+
     const {
         matricula = '000',
         cpf = '000',
@@ -46,7 +46,7 @@ const SenhaScreen = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isSecurity, setIsSecurity] = useState(true);
     const [isSecurityConfirm, setIsSecurityConfirm] = useState(true);
-    
+
     useEffect(() => {
         console.log("SenhaScreen carregado");
     }, []);
@@ -56,45 +56,44 @@ const SenhaScreen = () => {
             showToast('Campos vazios, preencha todos os campos');
             return;
         }
-        
+
         if (senha.length < 8) {
             showToast('Informe uma senha com no mínimo 8 caracteres');
             return;
         }
-        
+
         const regex = /^(?=.*[@!#$%^&*()/\\])(?=.*[0-9])(?=.*[A-Z])[@!#$%^&*()/\\a-zA-Z0-9]{8,20}$/;
         if (!regex.test(senha)) {
             Alert.alert("Senha inválida", "A senha deve conter no mínimo 1 letra maiúscula, 1 caractere especial e números.");
             return;
         }
-        
+
         if (senha !== confirmSenha) {
             showToast('Senhas não conferem');
             return;
         }
-        
+
         setIsLoading(true);
         Keyboard.dismiss();
-        
-        
-        CryptoJS.SHA1(senha).then(hash => {
-            const senhaHash = Platform.OS === "ios" ? hash.toUpperCase() : hash;
-            const url = `${Server.API}primeiroAcesso/testeInsert.asp?matricula=${matricula}&senha=${senhaHash}`;
-            
-            fetch(url)
-                .then(response => response.json())
-                .then(responseJson => {
-                    setIsLoading(false);
-                    if (responseJson.success) {
-                        showToast('Cadastrado com sucesso', 'success');
-                        navigation.navigate('Login');
-                    }
-                })
-                .catch(() => {
-                    setIsLoading(false);
-                    showToast('Erro ao cadastrar');
-                });
-        });
+
+
+
+        const senhaHash = CryptoJS.SHA1(senha).toString();
+        const url = `${Server.API}primeiroAcesso/testeInsert.asp?matricula=${matricula}&senha=${senhaHash.toUpperCase()}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(responseJson => {
+                setIsLoading(false);
+                if (responseJson.success) {
+                    showToast('Cadastrado com sucesso', 'success');
+                    navigation.navigate('Login');
+                }
+            })
+            .catch(() => {
+                setIsLoading(false);
+                showToast('Erro ao cadastrar');
+            });
     };
 
     const showToast = (message, type = 'danger') => {
@@ -104,7 +103,7 @@ const SenhaScreen = () => {
     };
 
     return (
-        <Container>
+        <NativeBaseProvider>
             <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
             <ImageBackground source={require('../../assets/fundoNovo.png')} style={styles.background}>
                 {isLoading ? (
@@ -117,30 +116,67 @@ const SenhaScreen = () => {
                         <View style={styles.logoContainer}>
                             <Image style={styles.logo} source={require('../../assets/Logo_MEDGLO_POS.png')} resizeMode="contain" />
                         </View>
-                        <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                        <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: "#000000" }}>
                             PRIMEIRO ACESSO
                         </Text>
                         <View style={styles.formContainer}>
-                            <View style={styles.formItem}>
-                                <Text>Senha:</Text>
-                                <TextInput style={styles.input} secureTextEntry={isSecurity} autoCapitalize="none" onChangeText={setSenha} />
-                                <FontAwesome5 name={isSecurity ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setIsSecurity(!isSecurity)} />
-                            </View>
-                            <View style={styles.formItem}>
-                                <Text>Confirme a Senha:</Text>
-                                <TextInput style={styles.input} secureTextEntry={isSecurityConfirm} autoCapitalize="none" onChangeText={setConfirmSenha} />
-                                <FontAwesome5 name={isSecurityConfirm ? 'eye' : 'eye-slash'} style={styles.eyeIcon} onPress={() => setIsSecurityConfirm(!isSecurityConfirm)} />
-                            </View>
+                            <Text>Senha:</Text>
+                            <Input
+                                secureTextEntry={isSecurity}
+                                style={{ width: "80%", color: "#000000", fontSize: 18 }}
+                                onChangeText={setSenha} autoCapitalize="none"
+                            />
+
+                            {isSecurity ? (
+                                <ChevronDownIcon
+                                    size="5"
+                                    mt="0.5"
+                                    color={ColorsScheme.ASENT_COLOR}
+                                    onPress={() => setIsSecurity(!isSecurity)}
+                                    style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                                />
+                            ) : (
+                                <ChevronUpIcon
+                                    size="5"
+                                    mt="0.5"
+                                    color={ColorsScheme.ASENT_COLOR}
+                                    onPress={() => setIsSecurity(!isSecurity)}
+                                    style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                                />
+                            )}
+                            <Text>Confirme a Senha:</Text>
+                            <Input
+                                secureTextEntry={isSecurityConfirm}
+                                style={{ width: "80%", color: "#000000", fontSize: 18 }}
+                                onChangeText={setConfirmSenha} autoCapitalize="none"
+                            />
+                            {isSecurityConfirm ? (
+                                <ChevronDownIcon
+                                    size="5"
+                                    mt="0.5"
+                                    color={ColorsScheme.ASENT_COLOR}
+                                    onPress={() => setIsSecurityConfirm(!isSecurityConfirm)}
+                                    style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                                />
+                            ) : (
+                                <ChevronUpIcon
+                                    size="5"
+                                    mt="0.5"
+                                    color={ColorsScheme.ASENT_COLOR}
+                                    onPress={() => setIsSecurityConfirm(!isSecurityConfirm)}
+                                    style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 25 }}
+                                />
+                            )}
                             <View style={styles.buttonContainer}>
                                 <Button style={styles.button} onPress={onSubmit}>
-                                    <Text>Cadastrar</Text>
+                                    <Text style={{ color: "#FFFFFF"}}>Cadastrar</Text>
                                 </Button>
                             </View>
                         </View>
                     </ScrollView>
                 )}
             </ImageBackground>
-        </Container>
+        </NativeBaseProvider>
     );
 };
 
@@ -153,10 +189,10 @@ const styles = StyleSheet.create({
     headerText: { padding: 10, textAlign: 'center', fontWeight: 'bold' },
     formContainer: { padding: 10 },
     formItem: { flexDirection: 'row', alignItems: 'center', paddingTop: 10 },
-    input: { flex: 1, fontSize: 14, color: "#000" },
+    input: { flex: 1, fontSize: 14, color: "#000", borderBottomWidth: 1, borderBottomColor: "#c4c4c4", },
     eyeIcon: { color: ColorsScheme.ASENT_COLOR, fontSize: 25, marginLeft: 10 },
     buttonContainer: { flexDirection: 'row', justifyContent: 'flex-end' },
-    button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR },
+    button: { margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 },
     borderRadius: 10
 });
 

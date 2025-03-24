@@ -75,59 +75,57 @@ const FinanceiroScreen = ({ navigation }) => {
 
   return (
     <NativeBaseProvider>
-      <Container>
-        <Base navigation={navigation}>
-          <HeaderGoBack navigation={navigation} title={"Segunda via"} />
-          <ScrollView style={{ marginBottom: 55 }}>
-            {isLoading ? (
-              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
-                <Spinner color={ColorsScheme.MAIN_COLOR} />
-                <Text style={{ color: "#000000", textAlign: "center" }}>Buscando...</Text>
-              </View>
-            ) : boletos.length > 0 ? (
-              <View style={{ backgroundColor: "white", margin: 20, marginTop: 30 }}>
-                <Card>
-                  {boletos.map((item, index) => (
-                    <CardItem style={{ marginTop: 13 }} bordered key={index}>
-                      <Body>
-                        <Text style={{ marginBottom: 10, fontWeight: "bold" }}>
-                          {moment(item.mes_referencia).format("MMMM/YYYY")}
-                        </Text>
-                        <Text style={{ fontSize: 16, marginBottom: 10 }}>R$ {item.valor_duplicata}</Text>
-                        <Text style={{ fontSize: 12, marginBottom: 10 }}>Vencimento: {item.vencimento_duplicata}</Text>
-                        <TouchableOpacity onPress={() => copyToClipboard(item.linha_digitavel)}>
-                          <Text style={{ color: "#A9A9A9" }}>Copiar linha digitável</Text>
-                        </TouchableOpacity>
-                      </Body>
-                      <Badge
-                        style={{
-                          backgroundColor: dataHoje < item.vencimento_duplicata ? "#f2d600" : "#ec1a07",
-                          position: "relative",
-                          marginRight: -25,
-                        }}
-                      >
-                        <Text style={{ color: dataHoje < item.vencimento_duplicata ? "#000000" : "#FFFFFF" }}>
-                          {dataHoje < item.vencimento_duplicata ? "A vencer" : "Vencido"}
-                        </Text>
-                      </Badge>
+      <Base navigation={navigation}>
+        <HeaderGoBack navigation={navigation} title={"Segunda via"} />
+        <ScrollView style={{ marginBottom: 55 }}>
+          {isLoading ? (
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
+              <Spinner color={ColorsScheme.MAIN_COLOR} />
+              <Text style={{ color: "#000000", textAlign: "center" }}>Buscando...</Text>
+            </View>
+          ) : boletos.length > 0 ? (
+            <View style={{ backgroundColor: "white", margin: 20, marginTop: 30 }}>
+              <Card>
+                {boletos.map((item, index) => (
+                  <CardItem style={{ marginTop: 13 }} bordered key={index}>
+                    <Body>
+                      <Text style={{ marginBottom: 10, fontWeight: "bold" }}>
+                        {moment(item.mes_referencia).format("MMMM/YYYY")}
+                      </Text>
+                      <Text style={{ fontSize: 16, marginBottom: 10 }}>R$ {item.valor_duplicata}</Text>
+                      <Text style={{ fontSize: 12, marginBottom: 10 }}>Vencimento: {item.vencimento_duplicata}</Text>
                       <TouchableOpacity onPress={() => copyToClipboard(item.linha_digitavel)}>
-                        <FontAwesome5 name={"copy"} style={{ fontSize: 20 }} />
+                        <Text style={{ color: "#A9A9A9" }}>Copiar linha digitável</Text>
                       </TouchableOpacity>
-                    </CardItem>
-                  ))}
-                </Card>
-              </View>
-            ) : (
-              <View style={{ marginTop: 30, alignItems: "center", justifyContent: "center" }}>
-                <FontAwesome5 name="exclamation-circle" size={50} color="#a0a0a0" />
-                <Text style={{ textAlign: "center", marginTop: 10, color: "#a0a0a0" }}>
-                  Não há informação a ser exibida.
-                </Text>
-              </View>
-            )}
-          </ScrollView>
-        </Base>
-      </Container>
+                    </Body>
+                    <Badge
+                      style={{
+                        backgroundColor: dataHoje < item.vencimento_duplicata ? "#f2d600" : "#ec1a07",
+                        position: "relative",
+                        marginRight: -25,
+                      }}
+                    >
+                      <Text style={{ color: dataHoje < item.vencimento_duplicata ? "#000000" : "#FFFFFF" }}>
+                        {dataHoje < item.vencimento_duplicata ? "A vencer" : "Vencido"}
+                      </Text>
+                    </Badge>
+                    <TouchableOpacity onPress={() => copyToClipboard(item.linha_digitavel)}>
+                      <FontAwesome5 name={"copy"} style={{ fontSize: 20 }} />
+                    </TouchableOpacity>
+                  </CardItem>
+                ))}
+              </Card>
+            </View>
+          ) : (
+            <View style={{ marginTop: 30, alignItems: "center", justifyContent: "center" }}>
+              <FontAwesome5 name="exclamation-circle" size={50} color="#a0a0a0" />
+              <Text style={{ textAlign: "center", marginTop: 10, color: "#a0a0a0" }}>
+                Não há informação a ser exibida.
+              </Text>
+            </View>
+          )}
+        </ScrollView>
+      </Base>
     </NativeBaseProvider>
   );
 };

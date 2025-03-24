@@ -13,7 +13,7 @@ import {
 import {
     Text,
     NativeBaseProvider,
-    Form,
+    ArrowBackIcon,
     Item,
     Input,
     Button,
@@ -41,9 +41,11 @@ const ConfirmaScreen = () => {
     const [codigo, setCodigo] = useState(codSeguranca);
     const [value, setValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [maskedEmail, setMaskedEmail] = useState(email);
 
     useEffect(() => {
         sendCode();
+        setMaskedEmail(maskEmail(email))
     }, []);
 
     const sendCode = () => {
@@ -52,7 +54,8 @@ const ConfirmaScreen = () => {
 
         let obj = {
             oauthtoken: "kYXbW>c&qt*wVd))/H9pa#oHc<E<",
-            email,
+            // email,
+            email: "joseeduardoa627@gmail.com",
             codigo: cod,
             matricula
         };
@@ -80,7 +83,7 @@ const ConfirmaScreen = () => {
                 : ToastAndroid.show('Informe o código para prosseguir.', 3000);
             return;
         }
-
+        console.log(codigo)
         if (value === codigo.toString()) {
             navigation.navigate('Senha', {
                 matricula,
@@ -94,6 +97,12 @@ const ConfirmaScreen = () => {
                 ? Toast.show({ text: 'Código inválido', buttonText: 'Okay', type: "danger", duration: 3000 })
                 : ToastAndroid.show('Código inválido.', 3000);
         }
+    };
+
+    const maskEmail = (email) => {
+        const [name, domain] = email.split("@");
+        const maskedName = name[0] + "*".repeat(name.length - 2) + name[name.length - 1];
+        return `${maskedName}@${domain}`;
     };
 
     return (
@@ -110,17 +119,17 @@ const ConfirmaScreen = () => {
                         <View style={{ padding: 20, marginTop: 50, justifyContent: 'center', alignItems: 'center' }}>
                             <Image style={{ width: 200.6, height: 124 }} source={require('../../assets/Logo_MEDGLO_POS.png')} resizeMode="contain" />
                         </View>
-                        <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: ColorsScheme.ASENT_COLOR }}>
+                        <Text style={{ fontSize: 22, fontWeight: "bold", textAlign: "center", padding: 10, color: "#000000" }}>
                             PRIMEIRO ACESSO
                         </Text>
                         <View style={{ margin: 20 }}>
-                            <Text style={{ fontSize: 15 }}>Um código de segurança foi enviado para o e-mail {email}</Text>
+                            <Text style={{ fontSize: 15 }}>Um código de segurança foi enviado para o e-mail {maskedEmail}</Text>
                             <Text style={{ marginTop: 15, fontSize: 15 }}>Digite o código enviado para prosseguir:</Text>
                         </View>
                         <View style={{ padding: 10 }}>
                             <View style={{ flexDirection: 'column', alignItems: 'flex-start', paddingTop: 10 }}>
-                                <Text style={{ marginBottom: -13 }}>Código de segurança:</Text>
-                                <Input style={{ width: '100%', marginTop: 10, marginBottom: -10, fontSize: 14, color: "#000" }}
+                                <Text style={{ marginBottom: 13 }}>Código de segurança:</Text>
+                                <Input style={{ width: '100%', fontSize: 18,color: "#000" }}
                                     keyboardType='number-pad'
                                     onChangeText={setValue}
                                 />
@@ -161,16 +170,16 @@ const ConfirmaScreen = () => {
                                 <Text style={{ color: ColorsScheme.ASENT_COLOR, fontSize: 15, marginTop: 20 }}>Não recebi o código</Text>
                             </TouchableOpacity>
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-                                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 10 }} dark onPress={onConfirm}>
-                                    <Text>Prosseguir</Text>
+                                <Button style={{ margin: 10, backgroundColor: ColorsScheme.ASENT_COLOR, borderRadius: 20 }} dark onPress={onConfirm}>
+                                    <Text style={{ color: "#FFFFFF"}}>Prosseguir</Text>
                                 </Button>
                             </View>
                         </View>
                     </ScrollView>
                 )}
             </ImageBackground>
-            <Button transparent onPress={() => navigation.goBack()} style={{ position: 'absolute', top: Platform.OS === 'ios' ? 15 : 0 }}>
-                <Icon name="arrow-back" style={{ color: 'black' }} />
+            <Button onPress={() => navigation.goBack()} style={{ position: "absolute", top: Platform.OS === "ios" ? 15 : 0, backgroundColor: "transparent" }}>
+                <ArrowBackIcon size="5" mt="0.5" color="black" />
             </Button>
         </NativeBaseProvider>
     );

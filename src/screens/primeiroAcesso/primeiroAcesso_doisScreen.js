@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {
     Text,
-    Container,
+    NativeBaseProvider,
     Form,
     Item,
     Input,
@@ -111,7 +111,7 @@ const PrimeiroAcessoDois = () => {
     };
 
     return (
-        <Container>
+        <NativeBaseProvider>
             <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
             <ImageBackground source={require('../../assets/fundoNovo.png')} style={styles.background}>
                 {isloading ? (
@@ -171,7 +171,7 @@ const PrimeiroAcessoDois = () => {
             <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
                 <Icon name="arrow-back" style={{ color: 'black' }} />
             </TouchableOpacity>
-        </Container>
+        </NativeBaseProvider>
     );
 };
 

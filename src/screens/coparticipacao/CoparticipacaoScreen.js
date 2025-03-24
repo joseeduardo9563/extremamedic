@@ -7,11 +7,11 @@ import {
   ScrollView
 } from "react-native";
 import {
-  Container,
   Text,
   Button,
   Picker,
   Toast,
+  NativeBaseProvider
 } from "native-base";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ColorsScheme from "../../settings/ColorsScheme";
@@ -100,7 +100,7 @@ const CoparticipacaoScreen = ({ navigation }) => {
   };
 
   return (
-    <Container>
+    <NativeBaseProvider>
       <Base navigation={navigation}>
         <HeaderGoBack navigation={navigation} title={"Coparticipação"} />
         <ScrollView style={{ marginBottom: 55 }}>
@@ -166,7 +166,7 @@ const CoparticipacaoScreen = ({ navigation }) => {
           </View>
         </ScrollView>
       </Base>
-    </Container>
+    </NativeBaseProvider>
   );
 };
 

@@ -52,7 +52,7 @@ const ResultCopartScreen = ({ navigation }) => {
   const fetchData = async (user) => {
     setIsLoading(true);
     let url = `${Server.API}coparticipacao/getCoparticipacao.asp?matricula=${user.matricula}&empresa=${params.empresa}&mesinicio=${params.mesInicio}/${params.anoInicio}&mesfim=${params.mesFim}/${params.anoFim}&tipo=${params.tipo}`;
-    
+
     try {
       const response = await fetch(url);
       const result = await response.json();
@@ -78,46 +78,44 @@ const ResultCopartScreen = ({ navigation }) => {
 
   return (
     <NativeBaseProvider>
-      <Container>
-        <Base navigation={navigation}>
-          <HeaderGoBack navigation={navigation} title={"Coparticipação"} />
-          <ScrollView style={{ marginBottom: 55 }}>
-            {isLoading ? (
-              <SpinnerDrawer text="Carregando..." textColor="#000000" spinColor={ColorsScheme.MAIN_COLOR} />
-            ) : isFail ? (
-              <SemInformacao error={true} />
-            ) : data.length > 0 ? (
-              <View style={{ margin: "4%", marginTop: 5 }}>
-                <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 25 }}>
-                  RELATÓRIO DE GUIAS DE COPARTICIPAÇÃO COBRADAS EM NF
-                </Text>
-                <Text style={{ fontSize: 14, marginBottom: 23 }}>
-                  Período de {params.mesInicio}/{params.anoInicio} a {params.mesFim}/{params.anoFim}
-                </Text>
-                <Text style={{ fontSize: 14, marginBottom: 20 }}>{nomeEmpresa}</Text>
-                {data.map((d, index) => (
-                  <Card key={index}>
-                    <CardItem bordered>
-                      <Body>
-                        <Text style={{ fontWeight: "bold" }}>Número guia: {d.numero_guia}</Text>
-                        {d.procedimentos.map((item, i) => (
-                          <View key={i}>
-                            <Text>{item.procedimento}</Text>
-                            <Text>Matrícula: {item.matricula}</Text>
-                            <Text>Total: {numeral(item.total_cobranca).format("$ 0,0.00")}</Text>
-                          </View>
-                        ))}
-                      </Body>
-                    </CardItem>
-                  </Card>
-                ))}
-              </View>
-            ) : (
-              <SemInformacao />
-            )}
-          </ScrollView>
-        </Base>
-      </Container>
+      <Base navigation={navigation}>
+        <HeaderGoBack navigation={navigation} title={"Coparticipação"} />
+        <ScrollView style={{ marginBottom: 55 }}>
+          {isLoading ? (
+            <SpinnerDrawer text="Carregando..." textColor="#000000" spinColor={ColorsScheme.MAIN_COLOR} />
+          ) : isFail ? (
+            <SemInformacao error={true} />
+          ) : data.length > 0 ? (
+            <View style={{ margin: "4%", marginTop: 5 }}>
+              <Text style={{ fontSize: 16, fontWeight: "bold", marginTop: 25 }}>
+                RELATÓRIO DE GUIAS DE COPARTICIPAÇÃO COBRADAS EM NF
+              </Text>
+              <Text style={{ fontSize: 14, marginBottom: 23 }}>
+                Período de {params.mesInicio}/{params.anoInicio} a {params.mesFim}/{params.anoFim}
+              </Text>
+              <Text style={{ fontSize: 14, marginBottom: 20 }}>{nomeEmpresa}</Text>
+              {data.map((d, index) => (
+                <Card key={index}>
+                  <CardItem bordered>
+                    <Body>
+                      <Text style={{ fontWeight: "bold" }}>Número guia: {d.numero_guia}</Text>
+                      {d.procedimentos.map((item, i) => (
+                        <View key={i}>
+                          <Text>{item.procedimento}</Text>
+                          <Text>Matrícula: {item.matricula}</Text>
+                          <Text>Total: {numeral(item.total_cobranca).format("$ 0,0.00")}</Text>
+                        </View>
+                      ))}
+                    </Body>
+                  </CardItem>
+                </Card>
+              ))}
+            </View>
+          ) : (
+            <SemInformacao />
+          )}
+        </ScrollView>
+      </Base>
     </NativeBaseProvider>
   );
 };

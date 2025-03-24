@@ -25,7 +25,7 @@ const UtilizacoesScreen = ({ navigation }) => {
   const dados = navigation.getParam("dados", []);
   const dataI = navigation.getParam("dataInicio", "");
   const dataF = navigation.getParam("dataFim", "");
-  
+
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [user, setUser] = useState({});
@@ -65,46 +65,44 @@ const UtilizacoesScreen = ({ navigation }) => {
 
   return (
     <NativeBaseProvider>
-      <Container>
-        <Base navigation={navigation}>
-          <HeaderGoBack navigation={navigation} title={"Utilizações"} />
-          <ScrollView style={{ marginBottom: 55 }}>
-            {isLoading ? (
-              <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
-                <Spinner color={ColorsScheme.MAIN_COLOR} />
-                <Text style={{ color: "#000000", textAlign: "center" }}>Buscando...</Text>
-              </View>
-            ) : data.length > 0 ? (
-              <View style={{ margin: 20, marginTop: 5 }}>
-                <Text style={{ fontSize: 14, marginTop: 25, marginBottom: 23 }}>
-                  Relatório de utilização por período
-                </Text>
-                <Card>
-                  {data.map((item, index) => (
-                    <CardItem style={{ marginBottom: 0 }} bordered key={index}>
-                      <Body>
-                        <Text style={{ fontSize: 12 }}>{item.data_execucao}</Text>
-                        <Text style={{ fontSize: 14, fontWeight: "bold" }}>{item.procedimento}</Text>
-                        <Text style={{ fontSize: 12 }}>{item.nome_beneficiario}</Text>
-                        <Text style={{ fontSize: 12 }}>Matrícula: {item.matricula}</Text>
-                        <Text style={{ fontSize: 12 }}>{item.nome_fantasia}</Text>
-                        <Text style={{ fontSize: 12 }}>Guia: {item.numero_guia}</Text>
-                      </Body>
-                    </CardItem>
-                  ))}
-                </Card>
-              </View>
-            ) : (
-              <View style={{ marginTop: 30, alignItems: "center", justifyContent: "center" }}>
-                <FontAwesome5 name="exclamation-circle" size={50} color="#a0a0a0" />
-                <Text style={{ textAlign: "center", marginTop: 10, color: "#a0a0a0" }}>
-                  Não há informação a ser exibida.
-                </Text>
-              </View>
-            )}
-          </ScrollView>
-        </Base>
-      </Container>
+      <Base navigation={navigation}>
+        <HeaderGoBack navigation={navigation} title={"Utilizações"} />
+        <ScrollView style={{ marginBottom: 55 }}>
+          {isLoading ? (
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center", marginTop: 105 }}>
+              <Spinner color={ColorsScheme.MAIN_COLOR} />
+              <Text style={{ color: "#000000", textAlign: "center" }}>Buscando...</Text>
+            </View>
+          ) : data.length > 0 ? (
+            <View style={{ margin: 20, marginTop: 5 }}>
+              <Text style={{ fontSize: 14, marginTop: 25, marginBottom: 23 }}>
+                Relatório de utilização por período
+              </Text>
+              <Card>
+                {data.map((item, index) => (
+                  <CardItem style={{ marginBottom: 0 }} bordered key={index}>
+                    <Body>
+                      <Text style={{ fontSize: 12 }}>{item.data_execucao}</Text>
+                      <Text style={{ fontSize: 14, fontWeight: "bold" }}>{item.procedimento}</Text>
+                      <Text style={{ fontSize: 12 }}>{item.nome_beneficiario}</Text>
+                      <Text style={{ fontSize: 12 }}>Matrícula: {item.matricula}</Text>
+                      <Text style={{ fontSize: 12 }}>{item.nome_fantasia}</Text>
+                      <Text style={{ fontSize: 12 }}>Guia: {item.numero_guia}</Text>
+                    </Body>
+                  </CardItem>
+                ))}
+              </Card>
+            </View>
+          ) : (
+            <View style={{ marginTop: 30, alignItems: "center", justifyContent: "center" }}>
+              <FontAwesome5 name="exclamation-circle" size={50} color="#a0a0a0" />
+              <Text style={{ textAlign: "center", marginTop: 10, color: "#a0a0a0" }}>
+                Não há informação a ser exibida.
+              </Text>
+            </View>
+          )}
+        </ScrollView>
+      </Base>
     </NativeBaseProvider>
   );
 };

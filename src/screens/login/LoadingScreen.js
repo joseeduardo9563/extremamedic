@@ -27,7 +27,8 @@ const LoadingScreen = ({ navigation }) => {
       try {
         const user = await AsyncStorage.getItem("@usuario");
         if (user) {
-          getAceite(JSON.parse(user).matricula);
+          // getAceite(JSON.parse(user).matricula);
+          navigation.navigate("Carteirinha");
         } else {
           navigation.navigate("Select");
         }
@@ -43,14 +44,16 @@ const LoadingScreen = ({ navigation }) => {
 
   const getAceite = async (matricula) => {
     try {
+      console.log(`Server teste: ${Server.GET}getTermoAceite/${matricula}`);
       const response = await axios.get(`${Server.GET}getTermoAceite/${matricula}`);
+      
       if (response.data && response.data.flag_termo === 1) {
         navigation.navigate("Carteirinha");
       } else {
         navigation.navigate("Termos");
       }
     } catch (error) {
-      console.error(error);
+      console.error("error teste",error);
       navigation.navigate("Carteirinha");
     }
   };

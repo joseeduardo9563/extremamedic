@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Linking, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { Container, Text } from 'native-base';
+import { Container, Text, NativeBaseProvider } from 'native-base';
 import { Button, Overlay } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import ColorsScheme from '../settings/ColorsScheme';
@@ -37,10 +37,12 @@ export default class Base extends Component {
         >
           <Drawer.Screen name="Main">
             {() => (
-              <Container style={{ backgroundColor: '#f8f8f8' }}>
-                {this.props.children}
-                <MyFooter openModal={this.openModal} navigation={this.props.navigation} />
-              </Container>
+              <NativeBaseProvider>
+                <View style={{ backgroundColor: '#f8f8f8' }}>
+                  {this.props.children}
+                  <MyFooter openModal={this.openModal} navigation={this.props.navigation} />
+                </View>
+              </NativeBaseProvider>
             )}
           </Drawer.Screen>
         </Drawer.Navigator>

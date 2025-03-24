@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 import ColorsScheme from '../../settings/ColorsScheme';
-import { View } from 'native-base';
+import { View, NativeBaseProvider } from 'native-base';
 
 const AlterarSenha = () => {
     const navigation = useNavigation();
@@ -58,7 +58,7 @@ const AlterarSenha = () => {
     };
 
     return (
-        <Container>
+        <NativeBaseProvider>
             <StatusBar backgroundColor={ColorsScheme.ASENT_COLOR} barStyle="light-content" />
             <ImageBackground source={require('../../assets/fundoNovo.png')} style={styles.background}>
                 <ScrollView>
@@ -89,7 +89,7 @@ const AlterarSenha = () => {
             <Button disabled={disable} transparent onPress={() => navigation.goBack()} style={styles.backButton}>
                 <Icon name="arrow-back" style={{ color: 'black' }} />
             </Button>
-        </Container>
+        </NativeBaseProvider>
     );
 };
 
