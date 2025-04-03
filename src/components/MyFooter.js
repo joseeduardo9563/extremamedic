@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import ColorsScheme from '../settings/ColorsScheme';
+import { ArrowBackIcon, Icon } from 'native-base';
 
 const MyFooter = ({ openModal, openDrawer }) => {
     const navigation = useNavigation();
@@ -11,7 +13,10 @@ const MyFooter = ({ openModal, openDrawer }) => {
     return (
         <View style={styles.footerContainer}>
             <TouchableOpacity style={styles.button} onPress={openModal}>
-                <FontAwesome5 name={'stethoscope'} solid style={styles.icon} />
+                <ArrowBackIcon  size="5" mt="0.5" color="white" />
+                {/* <Icon as={FontAwesome5} name="android1" color="coolGray.800" _dark={{
+                    color: "warmGray.50"
+                }} /> */}
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.button}
@@ -24,16 +29,16 @@ const MyFooter = ({ openModal, openDrawer }) => {
                     });
                 }}
             >
-                <FontAwesome5 name={'heart'} solid style={styles.icon} />
+                <ArrowBackIcon size="5" mt="0.5" color="white" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Carteirinha')}>
-                <FontAwesome5 name={'home'} style={styles.icon} />
+                <ArrowBackIcon size="5" mt="0.5" color="white" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Contato')}>
-                <FontAwesome5 name={'comment'} solid style={styles.icon} />
+                <ArrowBackIcon size="5" mt="0.5" color="white" />
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={openDrawer}>
-                <FontAwesome5 name={'bars'} solid style={styles.icon} />
+                <ArrowBackIcon size="5" mt="0.5" color="white" />
             </TouchableOpacity>
         </View>
     );
